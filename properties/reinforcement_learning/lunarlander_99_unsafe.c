@@ -1,0 +1,33 @@
+#include <math.h>
+
+void entry(const float tensor_input[1][8], float tensor_output[1][4]);
+
+int main()
+{
+	float tensor_input[1][8];
+	float tensor_output[1][4];
+
+	tensor_input[0][0] = nondet_float();
+	tensor_input[0][1] = nondet_float();
+	tensor_input[0][2] = nondet_float();
+	tensor_input[0][3] = nondet_float();
+	tensor_input[0][4] = nondet_float();
+	tensor_input[0][5] = nondet_float();
+	tensor_input[0][6] = nondet_float();
+	tensor_input[0][7] = nondet_float();
+
+	__ESBMC_assume(tensor_input[0][0] >= -0.32662237850330955f && tensor_input[0][0] <= -0.23637622149669044f);
+	__ESBMC_assume(tensor_input[0][1] >= 0.09789196149669044f && tensor_input[0][1] <= 0.18813811850330958f);
+	__ESBMC_assume(tensor_input[0][2] >= -0.7615219185033095f && tensor_input[0][2] <= -0.6712757614966904f);
+	__ESBMC_assume(tensor_input[0][3] >= 0.5374372814966905f && tensor_input[0][3] <= 0.6276834385033095f);
+	__ESBMC_assume(tensor_input[0][4] >= -0.008093011503309572f && tensor_input[0][4] <= 0.08215314550330957f);
+	__ESBMC_assume(tensor_input[0][5] >= 0.4216239714966904f && tensor_input[0][5] <= 0.5118701285033096f);
+	__ESBMC_assume(tensor_input[0][6] >= -0.04512307850330957f && tensor_input[0][6] <= 0.04512307850330957f);
+	__ESBMC_assume(tensor_input[0][7] >= -0.04512307850330957f && tensor_input[0][7] <= 0.04512307850330957f);
+
+	entry(tensor_input, tensor_output);
+
+	__ESBMC_assert(!((tensor_output[0][3] <= tensor_output[0][0])));
+
+	return 0;
+}
