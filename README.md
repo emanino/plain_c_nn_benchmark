@@ -10,7 +10,7 @@ A collection of neural networks implemented in plain C language, paired with for
 
 3. **./networks** contains the neural network code in plain C. All networks in  **/hopfield_nets** and **/poly_approx** depend on the keras2c layer described above. In contrast, all networks in **/reach_prob_density** and **/reinforcement_learning** have been converted with the onnx2c tool, which requires no dependencies.
 
-4. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition (assume), a call to the neural network (or mathematical function) and a postcondition (assert). The precondition and postcondition are exprssed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
+4. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition, a call to the neural network (or mathematical function) and a postcondition. The precondition and postcondition are expressed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
 
 ## Running ESBMC
 
@@ -60,24 +60,24 @@ The network width (4, 8, 16, 32 or 64) does not affect the dependencies. However
 
 The network architecture does not affect the dependencies. Furthermore, keras2c does not require math dependencies for the ReLU activation.
 
-1. ** all:** esbmc ./properties/poly_approx/poly_8_8_8/poly_8_8_8_thresh_3_unsafe.c ./networks/poly_approx/poly_8_8_8.c ./includes/keras2c/k2c_activations.c ./includes/keras2c/k2c_core_layers.c ./includes/keras2c/k2c_helper_functions.c -I ./includes/keras2c/ ./networks/poly_approx/
+1. **all:** esbmc ./properties/poly_approx/poly_8_8_8/poly_8_8_8_thresh_3_unsafe.c ./networks/poly_approx/poly_8_8_8.c ./includes/keras2c/k2c_activations.c ./includes/keras2c/k2c_core_layers.c ./includes/keras2c/k2c_helper_functions.c -I ./includes/keras2c/ ./networks/poly_approx/
 
 ### Reachability of Probability Density Networks
 
 These ReLU networks have no library dependencies thanks to onnx2c.
 
-1. ** gcas:** esbmc ./properties/reach_prob_density/gcas/gcas_9_unsafe.c ./networks/reach_prob_density/gcas.c
+1. **gcas:** esbmc ./properties/reach_prob_density/gcas/gcas_9_unsafe.c ./networks/reach_prob_density/gcas.c
 
-2. ** robot:** esbmc ./properties/reach_prob_density/robot/robot_3_safe.c ./networks/reach_prob_density/robot.c
+2. **robot:** esbmc ./properties/reach_prob_density/robot/robot_3_safe.c ./networks/reach_prob_density/robot.c
 
-3. ** vdp:** esbmc ./properties/reach_prob_density/vdp/vdp_6_unsafe.c ./networks/reach_prob_density/vdp.c
+3. **vdp:** esbmc ./properties/reach_prob_density/vdp/vdp_6_unsafe.c ./networks/reach_prob_density/vdp.c
 
 ### Reinforcement Learning Networks
 
 These ReLU networks have no library dependencies thanks to onnx2c.
 
-1. ** cartpole:** esbmc ./properties/reinforcement_learning/cartpole/cartpole_38_unsafe.c ./networks/reinforcement_learning/cartpole.c
+1. **cartpole:** esbmc ./properties/reinforcement_learning/cartpole/cartpole_38_unsafe.c ./networks/reinforcement_learning/cartpole.c
 
-2. ** dubinsrejoin:** esbmc ./properties/reinforcement_learning/dubinsrejoin/dubinsrejoin_13_safe.c ./networks/reinforcement_learning/dubinsrejoin.c
+2. **dubinsrejoin:** esbmc ./properties/reinforcement_learning/dubinsrejoin/dubinsrejoin_13_safe.c ./networks/reinforcement_learning/dubinsrejoin.c
 
-3. ** lunarlander:** esbmc ./properties/reinforcement_learning/lunarlander/lunarlander_89_safe.c ./networks/reinforcement_learning/lunarlander.c
+3. **lunarlander:** esbmc ./properties/reinforcement_learning/lunarlander/lunarlander_89_safe.c ./networks/reinforcement_learning/lunarlander.c
