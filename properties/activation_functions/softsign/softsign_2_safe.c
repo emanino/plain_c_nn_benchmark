@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float softsign(float x)
@@ -12,12 +14,12 @@ int main() /* check_non_decreasing */
 	float x1 = nondet_float();
 	float x2 = x1 + SOFTSIGN_CHECK_NEXT;
 	
-	__ESBMC_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1));
 	
 	float y1 = softsign(x1);
 	float y2 = softsign(x2);
 	
-	__ESBMC_assert(islessequal(y1, y2), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(y1, y2), ""); /* Expected result: verification successful */
 
     return 0;
 }

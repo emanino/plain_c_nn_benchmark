@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 void softmax(const float* x, float* y, int n)
@@ -30,12 +32,12 @@ int main() /* check_bounds_size_2 */
 	x[0] = nondet_float();
 	x[1] = nondet_float();
 	
-	__ESBMC_assume(!isnan(x[0]));
-	__ESBMC_assume(!isnan(x[1]));
+	__VERIFIER_assume(!isnan(x[0]));
+	__VERIFIER_assume(!isnan(x[1]));
 	
 	softmax(x, y, 2);
 	
-	__ESBMC_assert(islessequal(y[1], 0.9f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(y[1], 0.9f), ""); /* Expected result: verification failure */
 
     return 0;
 }

@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float relu(float x)
@@ -9,11 +11,11 @@ int main() /* check_negative_domain */
 {
 	float x = nondet_float();
 	
-	__ESBMC_assume(islessequal(x, 0.0f));
+	__VERIFIER_assume(islessequal(x, 0.0f));
 	
 	float y = relu(x);
 	
-	__ESBMC_assert(y == 0.0, ""); /* Expected result: verification successful */
+	__VERIFIER_assert(y == 0.0, ""); /* Expected result: verification successful */
 
     return 0;
 }

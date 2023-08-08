@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float elu(float x)
@@ -15,13 +17,13 @@ int main() /* check_derivative */
 	float x1 = nondet_float();
 	float x2 = x1 + ELU_CHECK_NEXT;
 	
-	__ESBMC_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1));
 	
 	float y1 = elu(x1);
 	float y2 = elu(x2);
 	float derivative = (y2 - y1) / ELU_CHECK_NEXT;
 	
-	__ESBMC_assert(islessequal(derivative, 1.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(derivative, 1.0f), ""); /* Expected result: verification successful */
 
     return 0;
 }

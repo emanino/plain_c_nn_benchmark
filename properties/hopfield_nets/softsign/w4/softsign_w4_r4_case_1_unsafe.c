@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 #include "../keras2c/k2c_include.h"
 #include "../hopfield_nets/hop_softsign_w4_r4.h"
@@ -13,11 +15,11 @@ int main()
 	input_array[2] = 1.0f;
 	input_array[3] = 1.0f;
 	
-	__ESBMC_assume(input_array[0] >= -1.0f && input_array[0] <= 1.0f); /* full input domain */
+	__VERIFIER_assume(input_array[0] >= -1.0f && input_array[0] <= 1.0f); /* full input domain */
 	
 	hop_softsign_w4_r4(&input_tensor,&output_tensor);
 	
-	__ESBMC_assert(isgreaterequal(output_array[15], 0.74f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(output_array[15], 0.74f), ""); /* Expected result: verification failure */
 
     return 0;
 }

@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 #define COS_CHECK_PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062f
@@ -10,7 +12,7 @@ int main() /* check_derivative */
 	float x1 = nondet_float();
 	float x2 = x1 + COS_CHECK_NEXT;
 	
-	__ESBMC_assume(isgreaterequal(x1, 0.0f));
+	__VERIFIER_assume(isgreaterequal(x1, 0.0f));
 	
 	float y1 = cosf(x1);
 	float y2 = cosf(x2);
@@ -19,7 +21,7 @@ int main() /* check_derivative */
 	float dref = -sinf(x1 / 2.0f + x2 / 2.0f); /* average analytical derivative of cos(x) at the midpoint between x1 and x2*/
 	float error = fabsf(derivative - dref)
 	
-	__ESBMC_assert(islessequal(error, SIN_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(error, SIN_CHECK_ERROR), ""); /* Expected result: verification successful */
 
     return 0;
 }

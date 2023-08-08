@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 void softmax(const float* x, float* y, int n)
@@ -32,8 +34,8 @@ int main() /* check_unitary_sum_size_2 */
 	x[0] = nondet_float();
 	x[1] = nondet_float();
 	
-	__ESBMC_assume(!isnan(x[0]));
-	__ESBMC_assume(!isnan(x[1]));
+	__VERIFIER_assume(!isnan(x[0]));
+	__VERIFIER_assume(!isnan(x[1]));
 	
 	softmax(x, y, 2);
 	
@@ -44,7 +46,7 @@ int main() /* check_unitary_sum_size_2 */
 	
 	float diff = fabsf(sum - 1.0f);
 	
-	__ESBMC_assert(islessequal(diff, SOFTMAX_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(diff, SOFTMAX_CHECK_ERROR), ""); /* Expected result: verification successful */
 
     return 0;
 }

@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 #include "../keras2c/k2c_include.h"
 #include "../poly_nets/poly_1024.h"
@@ -11,7 +13,7 @@ int main()
 	
 	/* restrict the input around the location of maximum error (x=3) */
 	float x = nondet_float();
-	__ESBMC_assume(isgreaterequal(x, 2.9f) && islessequal(x, 3.0f));
+	__VERIFIER_assume(isgreaterequal(x, 2.9f) && islessequal(x, 3.0f));
 	
 	/* call the neural network with non-deterministic input */
 	input_array[0] = x;
@@ -22,7 +24,7 @@ int main()
 	float diff = fabsf(y - output_array[0]);
 	
 	/* Try decreasing thresholds by a factor of two */
-	__ESBMC_assert(islessequal(diff, 0.00781257887349065423820901106559f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(diff, 0.00781257887349065423820901106559f), ""); /* Expected result: verification failure */
 	
 	return 0;
 }

@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 #include "../keras2c/k2c_include.h"
 #include "../hopfield_nets/hop_tanh_w8_r3.h"
@@ -17,13 +19,13 @@ int main()
 	input_array[6] = 1.0f;
 	input_array[7] = 1.0f;
 	
-	__ESBMC_assume(input_array[0] >= -1.0f && input_array[0] <= 1.0f); /* full input domain */
-	__ESBMC_assume(input_array[1] >= -1.0f && input_array[1] <= 1.0f); /* full input domain */
-	__ESBMC_assume(input_array[2] >= -1.0f && input_array[2] <= 1.0f); /* full input domain */
+	__VERIFIER_assume(input_array[0] >= -1.0f && input_array[0] <= 1.0f); /* full input domain */
+	__VERIFIER_assume(input_array[1] >= -1.0f && input_array[1] <= 1.0f); /* full input domain */
+	__VERIFIER_assume(input_array[2] >= -1.0f && input_array[2] <= 1.0f); /* full input domain */
 	
 	hop_tanh_w8_r3(&input_tensor,&output_tensor);
 	
-	__ESBMC_assert(isgreaterequal(output_array[17], 1.0f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(output_array[17], 1.0f), ""); /* Expected result: verification failure */
 
     return 0;
 }
