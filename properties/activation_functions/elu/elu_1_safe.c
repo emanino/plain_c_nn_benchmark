@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float elu(float x)
@@ -12,11 +14,11 @@ int main() /* check_positive_asymptote */
 {
 	float x = nondet_float();
 	
-	__ESBMC_assume(!isnan(x));
+	__VERIFIER_assume(!isnan(x));
 	
 	float y = elu(x);
 	
-	__ESBMC_assert(isgreaterequal(y, x), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, x), ""); /* Expected result: verification successful */
 
     return 0;
 }

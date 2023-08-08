@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h> 
  #include <string.h> 
 #include "k2c_include.h" 

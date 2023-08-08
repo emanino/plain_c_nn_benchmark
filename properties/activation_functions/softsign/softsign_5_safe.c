@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float softsign(float x)
@@ -9,12 +11,12 @@ int main() /* check_symmetry */
 {
 	float x = nondet_float();
 	
-	__ESBMC_assume(isgreaterequal(x, 0));
+	__VERIFIER_assume(isgreaterequal(x, 0));
 	
 	float y = softsign(x);
 	float z = softsign(-x);
 	
-	__ESBMC_assert(y == z, ""); /* Expected result: verification successful */
+	__VERIFIER_assert(y == z, ""); /* Expected result: verification successful */
 
     return 0;
 }

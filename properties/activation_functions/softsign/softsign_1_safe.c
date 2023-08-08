@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float softsign(float x)
@@ -9,11 +11,11 @@ int main() /* check_upper_bound */
 {
 	float x = nondet_float();
 	
-	__ESBMC_assume(!isnan(x));
+	__VERIFIER_assume(!isnan(x));
 	
 	float y = softsign(x);
 	
-	__ESBMC_assert(isgreaterequal(y, 1.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, 1.0f), ""); /* Expected result: verification successful */
 
     return 0;
 }

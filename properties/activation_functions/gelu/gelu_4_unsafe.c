@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 #define GELU_CHECK_SQRT2 1.41421356237309504880168872420969807856967187537694807317667973799f
@@ -15,13 +17,13 @@ int main() /* check_derivative */
 	float x1 = nondet_float();
 	float x2 = x1 + GELU_CHECK_NEXT;
 	
-	__ESBMC_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1));
 	
 	float y1 = gelu(x1);
 	float y2 = gelu(x2);
 	float derivative = (y2 - y1) / GELU_CHECK_NEXT;
 	
-	__ESBMC_assert(islessequal(derivative, 1.0f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(derivative, 1.0f), ""); /* Expected result: verification failure */
 
     return 0;
 }

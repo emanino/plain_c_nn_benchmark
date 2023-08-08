@@ -1,3 +1,5 @@
+#include <verifier_functions.h>
+
 #include <math.h>
 
 float logistic(float x)
@@ -12,13 +14,13 @@ int main() /* check_derivative */
 	float x1 = nondet_float();
 	float x2 = x1 + LOGISTIC_CHECK_NEXT;
 	
-	__ESBMC_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1));
 	
 	float y1 = logistic(x1);
 	float y2 = logistic(x2);
 	float derivative = (y2 - y1) / LOGISTIC_CHECK_NEXT;
 	
-	__ESBMC_assert(islessequal(derivative, 0.25f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(derivative, 0.25f), ""); /* Expected result: verification successful */
 
     return 0;
 }
