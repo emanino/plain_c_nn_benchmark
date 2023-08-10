@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include "../poly_nets/poly_32_32_32.h"
+#include <poly_approx/poly_32_32_32.h>
 
 int main()
 {
