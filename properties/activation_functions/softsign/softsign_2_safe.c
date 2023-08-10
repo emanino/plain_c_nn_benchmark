@@ -19,7 +19,7 @@ int main() /* check_non_decreasing */
 	float y1 = softsign(x1);
 	float y2 = softsign(x2);
 	
-	__VERIFIER_assert(islessequal(y1, y2), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(y1, y2)); /* Expected result: verification successful */
 
     return 0;
 }

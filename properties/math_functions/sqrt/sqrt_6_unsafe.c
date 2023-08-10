@@ -15,7 +15,7 @@ int main() /* check_inverse_exact */
 	float y = sqrtf(x);
 	float z = y * y;
 	
-	__VERIFIER_assert(x == z, ""); /* Expected result: verification failure */
+	__VERIFIER_assert(x == z); /* Expected result: verification failure */
 
     return 0;
 }

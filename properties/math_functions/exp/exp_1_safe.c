@@ -11,7 +11,7 @@ int main() /* check_affine_bound */
 	float y = expf(x);
 	float z = x + 1.0f; /* Tangent function at x = 0 */
 	
-	__VERIFIER_assert(isgreaterequal(y, z), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, z)); /* Expected result: verification successful */
 
     return 0;
 }

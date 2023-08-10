@@ -20,7 +20,7 @@ int main() /* check_derivative */
 	float d1 = 1.0f / x1; /* analytical derivative of log(x) at x = x1 */
 	float d2 = 1.0f / x2; /* analytical derivative of log(x) at x = x2 */
 	
-	__VERIFIER_assert(isgreaterequal(derivative, d1), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(derivative, d1)); /* Expected result: verification failure */
 
     return 0;
 }

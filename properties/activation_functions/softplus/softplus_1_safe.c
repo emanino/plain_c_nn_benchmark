@@ -15,7 +15,7 @@ int main() /* check_positive_asymptote */
 	
 	float y = softplus(x);
 	
-	__VERIFIER_assert(isgreaterequal(y, x), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, x)); /* Expected result: verification successful */
 
     return 0;
 }

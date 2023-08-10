@@ -14,7 +14,7 @@ int main() /* check_inverse_exact */
 	
 	float y = logf(expf(x));
 	
-	__VERIFIER_assert(x == y, ""); /* Expected result: verification failure */
+	__VERIFIER_assert(x == y); /* Expected result: verification failure */
 
     return 0;
 }

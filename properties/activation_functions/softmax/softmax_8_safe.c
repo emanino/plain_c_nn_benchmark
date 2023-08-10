@@ -50,7 +50,7 @@ int main() /* check_unitary_sum_size_4 */
 	
 	float diff = fabsf(sum - 1.0f);
 	
-	__VERIFIER_assert(islessequal(diff, SOFTMAX_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(diff, SOFTMAX_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

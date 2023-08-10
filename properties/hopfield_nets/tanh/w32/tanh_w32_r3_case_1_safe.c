@@ -61,7 +61,7 @@ int main()
 	
 	hop_tanh_w32_r3(&input_tensor,&output_tensor);
 	
-	__VERIFIER_assert(output_array[65] == 1.0f, ""); /* Expected result: verification successful */
+	__VERIFIER_assert(output_array[65] == 1.0f); /* Expected result: verification successful */
 
     return 0;
 }

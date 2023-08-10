@@ -15,7 +15,7 @@ add_library(keras_lib ${KERAS_C})
 file(GLOB_RECURSE MUSL_C LIST_DIRECTORIES true CONFIGURE_DEPENDS musl_math/*.c)
 
 if(VERBOSE_CONFIGURATION)
-  message("MUSL lib: ${KERAS_C}")
+  message("MUSL lib: ${MUSL_C}")
 endif()
 
 # I am having some issues compiling musl

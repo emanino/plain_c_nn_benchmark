@@ -14,7 +14,7 @@ int main() /* check_non_decreasing */
 	float y1 = expf(x1);
 	float y2 = expf(x2);
 	
-	__VERIFIER_assert(isgreaterequal(y1, y2), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y1, y2)); /* Expected result: verification successful */
 
     return 0;
 }

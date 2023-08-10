@@ -15,7 +15,7 @@ int main() /* check_derivative */
 	float y2 = expf(x2);
 	float derivative = (y2 - y1) / EXP_CHECK_NEXT;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, y2), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(derivative, y2)); /* Expected result: verification failure */
 
     return 0;
 }

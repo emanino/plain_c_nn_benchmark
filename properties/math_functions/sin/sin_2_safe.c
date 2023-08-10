@@ -17,7 +17,7 @@ int main() /* check_periodic */
 	
 	float error = fabsf(sinf(x1) - sinf(x2));
 	
-	__VERIFIER_assert(islessequal(error, SIN_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(error, SIN_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

@@ -11,7 +11,7 @@ int main() /* check_symmetry */
 	float y = erff(x);
 	float z = erff(-x);
 	
-	__VERIFIER_assert(y == z, ""); /* Expected result: verification success */
+	__VERIFIER_assert(y == z); /* Expected result: verification success */
 
     return 0;
 }

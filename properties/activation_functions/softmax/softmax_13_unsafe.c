@@ -41,7 +41,7 @@ int main() /* check_non_decreasing_size_4 */
 	
 	softmax(x, y, 4);
 	
-	__VERIFIER_assert(isgreaterequal(y[2], y[3]), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(y[2], y[3])); /* Expected result: verification failure */
 
     return 0;
 }

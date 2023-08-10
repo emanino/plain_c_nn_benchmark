@@ -15,7 +15,7 @@ int main() /* check_lower_bound */
 	
 	float y = logistic(x);
 	
-	__VERIFIER_assert(isgreaterequal(y, 0.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, 0.0f)); /* Expected result: verification successful */
 
     return 0;
 }
