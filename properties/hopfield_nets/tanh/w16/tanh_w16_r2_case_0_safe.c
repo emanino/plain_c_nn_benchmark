@@ -1,7 +1,7 @@
 #include <verifier_functions.h>
 
 #include <math.h>
-#include "../keras2c/k2c_include.h"
+#include <keras2c/k2c_include.h>
 #include "../hopfield_nets/hop_tanh_w16_r2.h"
 
 int main()
@@ -10,13 +10,13 @@ int main()
 	k2c_tensor input_tensor = {&input_array[0],2,32,{2,16,1,1,1}};
 	k2c_tensor output_tensor = {&output_array[0],2,32,{2,16,1,1,1}};
 	
-	input_array[0] = nondet_float();
-	input_array[1] = nondet_float();
-	input_array[2] = nondet_float();
-	input_array[3] = nondet_float();
-	input_array[4] = nondet_float();
-	input_array[5] = nondet_float();
-	input_array[6] = nondet_float();
+	input_array[0] = __VERIFIER_nondet_float();
+	input_array[1] = __VERIFIER_nondet_float();
+	input_array[2] = __VERIFIER_nondet_float();
+	input_array[3] = __VERIFIER_nondet_float();
+	input_array[4] = __VERIFIER_nondet_float();
+	input_array[5] = __VERIFIER_nondet_float();
+	input_array[6] = __VERIFIER_nondet_float();
 	input_array[7] = 1.0f;
 	input_array[8] = 1.0f;
 	input_array[9] = 1.0f;

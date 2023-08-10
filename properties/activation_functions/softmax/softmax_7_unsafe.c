@@ -31,8 +31,8 @@ int main() /* check_unitary_sum_size_2 */
 {
 	float x[2], y[2];
 
-	x[0] = nondet_float();
-	x[1] = nondet_float();
+	x[0] = __VERIFIER_nondet_float();
+	x[1] = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(!isnan(x[0]));
 	__VERIFIER_assume(!isnan(x[1]));

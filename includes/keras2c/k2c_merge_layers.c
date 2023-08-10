@@ -8,7 +8,7 @@ https://github.com/f0uriest/keras2c
 
 #include <string.h>
 #include <stdarg.h>
-#include "k2c_include.h"
+#include <keras2c/k2c_include.h>
 
 /**
  * Element-wise sum of several tensors.

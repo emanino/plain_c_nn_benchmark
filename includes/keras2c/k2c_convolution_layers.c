@@ -10,7 +10,7 @@ https://github.com/f0uriest/keras2c
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
-#include "k2c_include.h"
+#include <keras2c/k2c_include.h>
 
 
 /**

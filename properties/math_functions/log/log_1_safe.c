@@ -4,7 +4,7 @@
 
 int main() /* check_affine_bound */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(isgreaterequal(x, 0.0f));
 	

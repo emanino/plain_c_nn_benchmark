@@ -32,7 +32,7 @@ int main() /* check_non_decreasing_size_4 */
 {
 	float x[4], y[4];
 	
-	x[0] = nondet_float();
+	x[0] = __VERIFIER_nondet_float();
 	x[1] = x[0] + SOFTMAX_CHECK_NEXT;
 	x[2] = 0.123456f;
 	x[3] = 0.654321f;

@@ -12,13 +12,13 @@ float gelu(float x)
 
 int main() /* check_positive_asymptote */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(isgreaterequal(x, 0.0f));
 	
 	float y = gelu(x);
 	
-	__VERIFIER_assert(islessequal(y, x), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(y, x)); /* Expected result: verification successful */
 
     return 0;
 }

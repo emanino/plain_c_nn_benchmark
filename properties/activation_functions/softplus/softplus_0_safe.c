@@ -9,7 +9,7 @@ float softplus(float x)
 
 int main() /* check_non_negative */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(!isnan(x));
 	

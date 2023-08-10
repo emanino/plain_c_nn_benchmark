@@ -6,7 +6,7 @@
 
 int main() /* check_non_decreasing */
 {
-	float x1 = nondet_float();
+	float x1 = __VERIFIER_nondet_float();
 	float x2 = x1 + EXP_CHECK_NEXT;
 	
 	__VERIFIER_assume(!isnan(x1));

@@ -9,7 +9,7 @@ float softsign(float x)
 
 int main() /* check_lower_bound */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(!isnan(x));
 	

@@ -4,7 +4,7 @@
 
 int main() /* check_domain */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(islessthan(x, 0.0f));
 	
