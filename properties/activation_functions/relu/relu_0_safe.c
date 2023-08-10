@@ -9,7 +9,7 @@ float relu(float x)
 
 int main() /* check_negative_domain */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(islessequal(x, 0.0f));
 	

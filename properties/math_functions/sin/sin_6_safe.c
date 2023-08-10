@@ -9,7 +9,7 @@
 
 int main() /* check_inverse_approx */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(isgreaterequal(x, -SIN_CHECK_PI / 2.0f) && islessequal(x, SIN_CHECK_PI / 2.0f)); /* Choose a range such that asin() is well-defined */
 	

@@ -8,7 +8,7 @@
 
 int main() /* check_symmetry */
 {
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(isgreaterequal(x, 0));
 	

@@ -9,9 +9,9 @@ int main()
 	float tensor_input[1][3];
 	float tensor_output[1][3];
 
-	tensor_input[0][0] = nondet_float();
-	tensor_input[0][1] = nondet_float();
-	tensor_input[0][2] = nondet_float();
+	tensor_input[0][0] = __VERIFIER_nondet_float();
+	tensor_input[0][1] = __VERIFIER_nondet_float();
+	tensor_input[0][2] = __VERIFIER_nondet_float();
 
 	__VERIFIER_assume(tensor_input[0][0] >= -2.5f && tensor_input[0][0] <= 2.5f);
 	__VERIFIER_assume(tensor_input[0][1] >= -2.5f && tensor_input[0][1] <= 2.5f);

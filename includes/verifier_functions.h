@@ -5,13 +5,10 @@
 // Mainly consists of assume, reach_error, and nondets
 // See: https://sv-comp.sosy-lab.org/2023/rules.php
 
-extern float __VERIFIER_nondet_float();
-extern void __VERIFIER_assume(int cond);
-extern void reach_error();
+float __VERIFIER_nondet_float();
+void __VERIFIER_assume(int cond);
+void reach_error();
 
-inline void __VERIFIER_assert(int cond) {
-  if(!cond)
-    reach_error();
-}
+void __VERIFIER_assert(int cond);
 
 #endif

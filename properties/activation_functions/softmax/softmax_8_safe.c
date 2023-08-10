@@ -31,10 +31,10 @@ int main() /* check_unitary_sum_size_4 */
 {
 	float x[4], y[4];
 
-	x[0] = nondet_float();
-	x[1] = nondet_float();
-	x[2] = nondet_float();
-	x[3] = nondet_float();
+	x[0] = __VERIFIER_nondet_float();
+	x[1] = __VERIFIER_nondet_float();
+	x[2] = __VERIFIER_nondet_float();
+	x[3] = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(!isnan(x[0]));
 	__VERIFIER_assume(!isnan(x[1]));

@@ -9,7 +9,7 @@ https://github.com/f0uriest/keras2c
 #pragma once
 
 #include <stdlib.h>
-#include "k2c_tensor_include.h"
+#include <keras2c/k2c_tensor_include.h>
 
 
 // Activations

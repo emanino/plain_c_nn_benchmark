@@ -1,7 +1,7 @@
 #include <verifier_functions.h>
 
 #include <math.h>
-#include "../keras2c/k2c_include.h"
+#include <keras2c/k2c_include.h>
 #include "../hopfield_nets/hop_tanh_w32_r4.h"
 
 int main()
@@ -10,21 +10,21 @@ int main()
 	k2c_tensor input_tensor = {&input_array[0],2,128,{4,32,1,1,1}};
 	k2c_tensor output_tensor = {&output_array[0],2,128,{4,32,1,1,1}};
 	
-	input_array[0] = nondet_float();
-	input_array[1] = nondet_float();
-	input_array[2] = nondet_float();
-	input_array[3] = nondet_float();
-	input_array[4] = nondet_float();
-	input_array[5] = nondet_float();
-	input_array[6] = nondet_float();
-	input_array[7] = nondet_float();
-	input_array[8] = nondet_float();
-	input_array[9] = nondet_float();
-	input_array[10] = nondet_float();
-	input_array[11] = nondet_float();
-	input_array[12] = nondet_float();
-	input_array[13] = nondet_float();
-	input_array[14] = nondet_float();
+	input_array[0] = __VERIFIER_nondet_float();
+	input_array[1] = __VERIFIER_nondet_float();
+	input_array[2] = __VERIFIER_nondet_float();
+	input_array[3] = __VERIFIER_nondet_float();
+	input_array[4] = __VERIFIER_nondet_float();
+	input_array[5] = __VERIFIER_nondet_float();
+	input_array[6] = __VERIFIER_nondet_float();
+	input_array[7] = __VERIFIER_nondet_float();
+	input_array[8] = __VERIFIER_nondet_float();
+	input_array[9] = __VERIFIER_nondet_float();
+	input_array[10] = __VERIFIER_nondet_float();
+	input_array[11] = __VERIFIER_nondet_float();
+	input_array[12] = __VERIFIER_nondet_float();
+	input_array[13] = __VERIFIER_nondet_float();
+	input_array[14] = __VERIFIER_nondet_float();
 	input_array[15] = 1.0f;
 	input_array[16] = 1.0f;
 	input_array[17] = 1.0f;

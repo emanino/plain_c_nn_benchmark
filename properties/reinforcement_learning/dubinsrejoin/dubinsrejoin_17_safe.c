@@ -9,14 +9,14 @@ int main()
 	float tensor_dense_input[1][8];
 	float tensor_dense_2[1][8];
 
-	tensor_dense_input[0][0] = nondet_float();
-	tensor_dense_input[0][1] = nondet_float();
-	tensor_dense_input[0][2] = nondet_float();
-	tensor_dense_input[0][3] = nondet_float();
-	tensor_dense_input[0][4] = nondet_float();
-	tensor_dense_input[0][5] = nondet_float();
-	tensor_dense_input[0][6] = nondet_float();
-	tensor_dense_input[0][7] = nondet_float();
+	tensor_dense_input[0][0] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][1] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][2] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][3] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][4] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][5] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][6] = __VERIFIER_nondet_float();
+	tensor_dense_input[0][7] = __VERIFIER_nondet_float();
 
 	__VERIFIER_assume(tensor_dense_input[0][0] >= 0.06990589059849364f && tensor_dense_input[0][0] <= 0.2051228967986566f);
 	__VERIFIER_assume(tensor_dense_input[0][1] >= -0.3513050316570846f && tensor_dense_input[0][1] <= -0.21608802545692163f);

@@ -1,7 +1,7 @@
 #include <verifier_functions.h>
 
 #include <math.h>
-#include "../keras2c/k2c_include.h"
+#include <keras2c/k2c_include.h>
 #include "../poly_nets/poly_32_32_32.h"
 
 int main()
@@ -12,7 +12,7 @@ int main()
     k2c_tensor output_tensor = {&output_array[0],1,1,{1,1,1,1,1}};
 	
 	/* restrict the input around the location of maximum error (x=3) */
-	float x = nondet_float();
+	float x = __VERIFIER_nondet_float();
 	__VERIFIER_assume(isgreaterequal(x, 2.9f) && islessequal(x, 3.0f));
 	
 	/* call the neural network with non-deterministic input */

@@ -32,7 +32,7 @@ int main() /* check_non_decreasing_size_2 */
 {
 	float x[2], y[2];
 	
-	x[0] = nondet_float();
+	x[0] = __VERIFIER_nondet_float();
 	x[1] = x[0] + SOFTMAX_CHECK_NEXT;
 	
 	__VERIFIER_assume(!isnan(x[0]));
