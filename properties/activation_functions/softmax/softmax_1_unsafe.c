@@ -37,7 +37,7 @@ int main() /* check_bounds_size_2 */
 	
 	softmax(x, y, 2);
 	
-	__VERIFIER_assert(islessequal(y[1], 0.9f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(y[1], 0.9f)); /* Expected result: verification failure */
 
     return 0;
 }

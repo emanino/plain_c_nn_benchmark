@@ -18,7 +18,7 @@ int main() /* check_derivative */
 	float d1 = 1.0f / (2.0f * y1); /* analytical derivative of sqrt(x) at x = x1 */
 	float d2 = 1.0f / (2.0f * y2); /* analytical derivative of sqrt(x) at x = x2 */
 	
-	__VERIFIER_assert(isgreaterequal(derivative, d2), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(derivative, d2)); /* Expected result: verification successful */
 
     return 0;
 }

@@ -10,7 +10,7 @@ int main() /* check_domain */
 	
 	float y = sqrtf(x);
 	
-	__VERIFIER_assert(isnan(y), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isnan(y)); /* Expected result: verification successful */
 
     return 0;
 }

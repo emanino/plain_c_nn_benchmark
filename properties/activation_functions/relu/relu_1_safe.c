@@ -15,7 +15,7 @@ int main() /* check_positive_domain */
 	
 	float y = relu(x);
 	
-	__VERIFIER_assert(y == x, ""); /* Expected result: verification successful */
+	__VERIFIER_assert(y == x); /* Expected result: verification successful */
 
     return 0;
 }

@@ -15,7 +15,7 @@ int main() /* check_inverse_approx */
 	float y = sqrtf(x);
 	float z = fabsf(y * y - x);
 	
-	__VERIFIER_assert(islessequal(z, SQRT_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(z, SQRT_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

@@ -20,7 +20,7 @@ int main() /* check_derivative */
 	
 	float dref = -sinf(x1 / 2.0f + x2 / 2.0f); /* average analytical derivative of cos(x) at the midpoint between x1 and x2*/
 	
-	__VERIFIER_assert(derivative == dref, ""); /* Expected result: verification failure */
+	__VERIFIER_assert(derivative == dref); /* Expected result: verification failure */
 
     return 0;
 }

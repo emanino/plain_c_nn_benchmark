@@ -20,7 +20,7 @@ int main() /* check_symmetry */
 	float y = logistic(x);
 	float z = 1.0f - logistic(-x); /* Almost identical, except for subnormal numbers and rounding errors */
 	
-	__VERIFIER_assert(y == z, ""); /* Expected result: verification failure */
+	__VERIFIER_assert(y == z); /* Expected result: verification failure */
 
     return 0;
 }

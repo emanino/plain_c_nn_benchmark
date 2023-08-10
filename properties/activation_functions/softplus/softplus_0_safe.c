@@ -15,7 +15,7 @@ int main() /* check_non_negative */
 	
 	float y = softplus(x);
 	
-	__VERIFIER_assert(isgreaterequal(y, 0.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(y, 0.0f)); /* Expected result: verification successful */
 
     return 0;
 }

@@ -37,7 +37,7 @@ int main()
 	
 	hop_tanh_w16_r4(&input_tensor,&output_tensor);
 	
-	__VERIFIER_assert(isgreaterequal(output_array[62], 0.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(output_array[62], 0.0f)); /* Expected result: verification successful */
 
     return 0;
 }

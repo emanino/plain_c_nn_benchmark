@@ -109,7 +109,7 @@ int main()
 	
 	hop_tanh_w64_r2(&input_tensor,&output_tensor);
 	
-	__VERIFIER_assert(isgreaterequal(output_array[65], 0.91f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(output_array[65], 0.91f)); /* Expected result: verification failure */
 
     return 0;
 }

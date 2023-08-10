@@ -17,7 +17,7 @@ int main() /* check_periodic */
 	
 	float error = fabsf(cosf(x1) - cosf(x2));
 	
-	__VERIFIER_assert(islessequal(error, COS_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(error, COS_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

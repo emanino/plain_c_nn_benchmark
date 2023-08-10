@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include "../hopfield_nets/hop_tanh_w8_r2.h"
+#include <hopfield_nets/tanh/w8/hop_tanh_w8_r2.h>
 
 int main()
 {
@@ -25,7 +25,7 @@ int main()
 	
 	hop_tanh_w8_r2(&input_tensor,&output_tensor);
 	
-	__VERIFIER_assert(isgreaterequal(output_array[9], 0.91f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(output_array[9], 0.91f)); /* Expected result: verification failure */
 
     return 0;
 }

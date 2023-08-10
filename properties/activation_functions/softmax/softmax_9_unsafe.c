@@ -48,7 +48,7 @@ int main() /* check_unitary_sum_size_4 */
 	for(i = 0; i < 4; ++i)
 		sum += y[i];
 	
-	__VERIFIER_assert(sum == 1.0f, ""); /* Expected result: verification failure */
+	__VERIFIER_assert(sum == 1.0f); /* Expected result: verification failure */
 
     return 0;
 }

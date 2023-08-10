@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include "../hopfield_nets/hop_softsign_w4_r3.h"
+#include <hopfield_nets/softsign/w4/hop_softsign_w4_r3.h>
 
 int main()
 {
@@ -19,7 +19,7 @@ int main()
 	
 	hop_softsign_w4_r3(&input_tensor,&output_tensor);
 	
-	__VERIFIER_assert(isgreaterequal(output_array[9], 0.68f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(output_array[9], 0.68f)); /* Expected result: verification failure */
 
     return 0;
 }

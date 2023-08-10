@@ -24,7 +24,7 @@ int main()
 	float diff = fabsf(y - output_array[0]);
 	
 	/* Try decreasing thresholds by a factor of two */
-	__VERIFIER_assert(islessequal(diff, 0.17576623970632130468784228393276f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(diff, 0.17576623970632130468784228393276f)); /* Expected result: verification successful */
 	
 	return 0;
 }

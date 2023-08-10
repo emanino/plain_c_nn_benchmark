@@ -23,7 +23,7 @@ int main() /* check_derivative */
 	float y2 = gelu(x2);
 	float derivative = (y2 - y1) / GELU_CHECK_NEXT;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, 0.0f), ""); /* Expected result: verification failure */
+	__VERIFIER_assert(isgreaterequal(derivative, 0.0f)); /* Expected result: verification failure */
 
     return 0;
 }

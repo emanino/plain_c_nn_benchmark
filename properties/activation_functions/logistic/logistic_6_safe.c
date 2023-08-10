@@ -20,7 +20,7 @@ int main() /* check_inverse_approx */
 	float y = 2.0 * atanhf(2.0f * logistic(x) - 1);
 	float z = fabsf(x - y);
 	
-	__VERIFIER_assert(islessequal(z, LOGISTIC_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(z, LOGISTIC_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

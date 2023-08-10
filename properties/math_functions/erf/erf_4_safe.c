@@ -18,7 +18,7 @@ int main() /* check_derivative */
 	float y2 = erff(x2);
 	float derivative = (y2 - y1) / ERF_CHECK_NEXT;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, 0.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(derivative, 0.0f)); /* Expected result: verification successful */
 
     return 0;
 }

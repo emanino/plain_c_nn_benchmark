@@ -15,7 +15,7 @@ int main() /* check_inverse_approx */
 	float y = expf(logf(x));
 	float z = fabsf(x - y);
 	
-	__VERIFIER_assert(islessequal(z, LOG_CHECK_ERROR), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(z, LOG_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

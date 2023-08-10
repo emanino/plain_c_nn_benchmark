@@ -15,7 +15,7 @@ int main() /* check_derivative */
 	float y2 = tanhf(x2);
 	float derivative = (y2 - y1) / TANH_CHECK_NEXT;
 	
-	__VERIFIER_assert(islessequal(derivative, 1.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(derivative, 1.0f)); /* Expected result: verification successful */
 
     return 0;
 }

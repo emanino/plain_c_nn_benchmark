@@ -20,7 +20,7 @@ int main() /* check_derivative */
 	float y2 = logistic(x2);
 	float derivative = (y2 - y1) / LOGISTIC_CHECK_NEXT;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, 0.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(derivative, 0.0f)); /* Expected result: verification successful */
 
     return 0;
 }

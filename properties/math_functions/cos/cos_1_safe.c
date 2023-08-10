@@ -10,7 +10,7 @@ int main() /* check_upper_bound */
 	
 	float y = cosf(x);
 	
-	__VERIFIER_assert(islessequal(y, 1.0f), ""); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(y, 1.0f)); /* Expected result: verification successful */
 
     return 0;
 }

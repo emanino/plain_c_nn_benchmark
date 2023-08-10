@@ -16,7 +16,7 @@ int main() /* check_symmetry */
 	float y = softsign(x);
 	float z = softsign(-x);
 	
-	__VERIFIER_assert(y == z, ""); /* Expected result: verification successful */
+	__VERIFIER_assert(y == z); /* Expected result: verification successful */
 
     return 0;
 }
