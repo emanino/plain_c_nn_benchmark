@@ -6,6 +6,7 @@ if(VERBOSE_CONFIGURATION)
 endif()
 
 add_library(hopfield_lib ${HOPFIELD_C})
+target_link_libraries(hopfield_lib keras_lib)
 
 # POLYNOMIAL APPROXIMATION
 file(GLOB_RECURSE POLY_C LIST_DIRECTORIES true CONFIGURE_DEPENDS poly_approx/*.c)
@@ -15,6 +16,7 @@ if(VERBOSE_CONFIGURATION)
 endif()
 
 add_library(poly_approx_lib ${POLY_C})
+target_link_libraries(poly_approx_lib keras_lib)
 
 # REACH PROB DENSITY
 file(GLOB_RECURSE REACH_PROB_C LIST_DIRECTORIES true CONFIGURE_DEPENDS reach_prob_density/*.c)
