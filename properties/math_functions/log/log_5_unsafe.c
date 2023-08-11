@@ -10,7 +10,7 @@ int main() /* check_inverse_exact */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, 0.0f) && islessequal(x, LOG_CHECK_RANGE); /* Choose a range where precision is high */
+	__VERIFIER_assume(isgreaterequal(x, 0.0f) && islessequal(x, LOG_CHECK_RANGE)); /* Choose a range where precision is high */
 	
 	float y = expf(logf(x));
 	

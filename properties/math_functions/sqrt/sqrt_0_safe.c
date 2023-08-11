@@ -6,7 +6,7 @@ int main() /* check_domain */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(islessthan(x, 0.0f));
+	__VERIFIER_assume(isless(x, 0.0f));
 	
 	float y = sqrtf(x);
 	
