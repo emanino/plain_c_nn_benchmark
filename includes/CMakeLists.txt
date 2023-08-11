@@ -8,7 +8,7 @@ if(VERBOSE_CONFIGURATION)
 endif()
 
 add_library(keras_lib ${KERAS_C})
-
+target_link_libraries(keras_lib PUBLIC m)
 
 # MUSL
 

@@ -7,7 +7,7 @@ foreach(benchmark ${BENCHMARKS_C})
   endif()
   get_filename_component(filename ${benchmark} NAME)
   add_executable(${filename}-exe ${benchmark})
-  target_link_libraries(${filename}-exe NETWORKS keras_lib stub)
+  target_link_libraries(${filename}-exe  keras_lib stub NETWORKS m)
 endforeach()
 
 
