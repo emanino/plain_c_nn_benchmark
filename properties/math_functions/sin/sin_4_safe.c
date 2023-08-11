@@ -19,7 +19,7 @@ int main() /* check_derivative */
 	float derivative = (y2 - y1) / SIN_CHECK_NEXT;
 	
 	float dref = cosf(x1 / 2.0f + x2 / 2.0f); /* average analytical derivative of sin(x) at the midpoint between x1 and x2*/
-	float error = fabsf(derivative - dref)
+	float error = fabsf(derivative - dref);
 	
 	__VERIFIER_assert(islessequal(error, SIN_CHECK_ERROR)); /* Expected result: verification successful */
 

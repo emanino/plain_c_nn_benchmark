@@ -16,7 +16,7 @@ int main() /* check_inverse_approx */
 	float y = acosf(cosf(x));
 	float z = fabsf(x - y);
 	
-	__VERIFIER_assert(islessequal(z, SIN_CHECK_ERROR)); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(z, COS_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

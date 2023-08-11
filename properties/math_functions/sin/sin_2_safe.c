@@ -11,7 +11,7 @@ int main() /* check_periodic */
 {
 	float x1 = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, -SIN_CHECK_RANGE) && islessequal(x, SIN_CHECK_RANGE)); /* Choose a range where precision is high */
+	__VERIFIER_assume(isgreaterequal(x1, -SIN_CHECK_RANGE) && islessequal(x1, SIN_CHECK_RANGE)); /* Choose a range where precision is high */
 	
 	float x2 = x1 + 2.0f * SIN_CHECK_PI; /* Next period */
 	
