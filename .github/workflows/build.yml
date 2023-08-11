@@ -11,6 +11,8 @@ jobs:
       run: mkdir build && cd build && cmake ..
     - name: Build
       run: cd build && make -j4 && make install
+    - name: Post-Processing
+      run: ./benchexec-extras/clean.sh ./build/export
     - uses: actions/upload-artifact@v1
       with:
         name: benchmarks
