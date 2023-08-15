@@ -16,5 +16,7 @@ add_subdirectory(networks)
 # Benchmarks
 add_subdirectory(properties)
 
+# Benchexec Extras
+add_subdirectory(benchexec-extras)
 
 
