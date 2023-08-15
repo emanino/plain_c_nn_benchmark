@@ -10,5 +10,10 @@ jobs:
     - name: Configure project
       run: mkdir build && cd build && cmake ..
     - name: Build
-      run: cd build && make -j4
+      run: cd build && make -j4 && make install
+    - uses: actions/upload-artifact@v1
+          with:
+            name: benchmarks
+            path: ./build/export
+
 
