@@ -78,7 +78,7 @@ function(generate_benchmark_yml BENCHMARK)
 
   # Options
   file(APPEND ${DESTINATION} "options:\n")
-  file(APPEND ${DESTINATION} "  language: C")
+  file(APPEND ${DESTINATION} "  language: C\n")
   file(APPEND ${DESTINATION} "  data_model: LP32\n")
 endfunction()
 
