@@ -12,8 +12,8 @@ jobs:
     - name: Build
       run: cd build && make -j4 && make install
     - uses: actions/upload-artifact@v1
-          with:
-            name: benchmarks
-            path: ./build/export
+      with:
+        name: benchmarks
+        path: ./build/export
 
 
