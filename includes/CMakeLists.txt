@@ -24,5 +24,3 @@ endif()
 # STUB
 
 add_library(stub verifier_stubs.c)
-
-generate_amalgamation(KERAS_C keras_almagamation)

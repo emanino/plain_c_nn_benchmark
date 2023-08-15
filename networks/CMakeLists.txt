@@ -49,15 +49,3 @@ add_library(reinforcement_lib ${REINFORCEMENT_C})
 ####################
 add_library(NETWORKS INTERFACE)
 target_link_libraries(NETWORKS INTERFACE hopfield_lib poly_approx_lib reach_prob_lib reinforcement_lib)
-
-
-################
-# AMALGAMATION #
-################
-
-generate_amalgamation(HOPFIELD_C hopfield_almagamation)
-generate_amalgamation(POLY_C poly_almagamation)
-
-# Some libs still require a bit of work to work (they contain repeated symbols)
-#generate_amalgamation(REACH_PROB_C reach_prob_almagamation)
-#generate_amalgamation(REINFORCEMENT_C reinforcement_almagamation)
