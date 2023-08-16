@@ -12,3 +12,6 @@ find $1 -iname *.i | xargs sed -i -e 's/__attribute__ ((__malloc__ (__builtin_fr
 find $1 -iname *.i | xargs sed -i -e 's/__attribute__ ((__malloc__ (reallocarray, 1)))/ /g'
 find $1 -iname *.i | xargs sed -i -e 's/__attribute__ ((__malloc__ (fclose, 1)))/ /g'
 find $1 -iname *.i | xargs sed -i -e 's/__attribute__ ((__malloc__ (pclose, 1)))/ /g'
+
+# Builtin stuff
+find $1 -iname *.i | xargs sed -i -e 's/__builtin_isgreaterequal/isgreaterequal/g'
