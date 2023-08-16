@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE benchmark PUBLIC "+//IDN sosy-lab.org//DTD BenchExec benchmark 1.9//EN" "https://www.sosy-lab.org/benchexec/benchmark-2.3.dtd">
+<benchmark tool="cpachecker" timelimit="5 min" memlimit="6 GB" cpuCores="2">
+<require cpuModel="Intel Xeon E3-1230 v5 @ 3.40 GHz"/>
+  
+  <resultfiles>**/*.graphml</resultfiles>
+  <option name="-svcomp23"/>
+  <option name="-heap">10000M</option>
+  <option name="-benchmark"/>
+  <option name="-timelimit">900 s</option>
+
+  
+<rundefinition name="NN-Benchmarks">
+  <tasks name="Activation-Functions">
+    <includesfile>../nn-benchmarks/activation_functions.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks>
+  <tasks name="Math-Functions">
+    <includesfile>../nn-benchmarks/math_functions.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks>
+  <tasks name="Reach-Prob-Density">
+    <includesfile>../nn-benchmarks/reach_prob_density.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks>
+  <tasks name="Hopfield-Nets">
+    <includesfile>../nn-benchmarks/hopfield_nets.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks>
+  <tasks name="Poly-Approx">
+    <includesfile>../nn-benchmarks/poly_approx.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks>
+  <tasks name="Reinforcement-Learning">
+    <includesfile>../nn-benchmarks/reinforcement_learning.set</includesfile>
+    <propertyfile>../nn-benchmarks/properties/unreach-call.prp</propertyfile>
+  </tasks> 
+</rundefinition>
+</benchmark>
