@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#define TANH_CHECK_NEXT 1e-5f
+#define TANH_CHECK_NEXT 1e-2f
 
 int main() /* check_derivative */
 {

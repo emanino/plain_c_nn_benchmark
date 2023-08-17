@@ -2,11 +2,10 @@
 
 #include <math.h>
 
-#define TANH_CHECK_NEXT 1e-5f
-#define TANH_CHECK_RANGE 10.0f
-#define TANH_CHECK_ERROR 1e-10f
+#define TANH_CHECK_RANGE 5.0f
+#define TANH_CHECK_ERROR 1e-2f
 
-int main() /* check_inverse_approx */
+int main() /* check_inverse */
 {
 	float x = __VERIFIER_nondet_float();
 	

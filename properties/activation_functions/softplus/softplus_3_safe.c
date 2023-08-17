@@ -7,8 +7,7 @@ float softplus(float x)
 	return log1pf(expf(x));
 }
 
-#define SOFTPLUS_CHECK_LOG2 0.6931471805599453094172321214581765680755001343602552541206800094f
-#define SOFTPLUS_CHECK_NEXT 1e-5
+#define SOFTPLUS_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing */
 {

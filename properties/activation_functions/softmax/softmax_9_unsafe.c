@@ -25,8 +25,6 @@ void softmax(const float* x, float* y, int n)
 		y[i] /= sum;
 }
 
-#define SOFTMAX_CHECK_ERROR 1e-10
-
 int main() /* check_unitary_sum_size_4 */
 {
 	float x[4], y[4];

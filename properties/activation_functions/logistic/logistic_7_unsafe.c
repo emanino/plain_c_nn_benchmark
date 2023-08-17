@@ -7,10 +7,6 @@ float logistic(float x)
 	return 0.5f * tanh(0.5f * x) + 0.5f;
 }
 
-#define LOGISTIC_CHECK_NEXT 1e-5f
-#define LOGISTIC_CHECK_RANGE 10.0f
-#define LOGISTIC_CHECK_ERROR 1e-10f
-
 int main() /* check_symmetry */
 {
 	float x = __VERIFIER_nondet_float();

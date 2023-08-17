@@ -10,7 +10,7 @@ float elu(float x)
 		return expf(x) - 1.0f;
 }
 
-#define ELU_CHECK_NEXT 1e-5
+#define ELU_CHECK_NEXT 1e-2
 
 int main() /* check_derivative */
 {
@@ -23,7 +23,8 @@ int main() /* check_derivative */
 	float y2 = elu(x2);
 	float derivative = (y2 - y1) / ELU_CHECK_NEXT;
 	
-	__VERIFIER_assert(islessequal(derivative, 1.0f)); /* Expected result: verification successful */
+	/* for large x the empirical derivative loses precision */
+	__VERIFIER_assert(islessequal(derivative, 1.0f)); /* Expected result: verification failure */
 
     return 0;
 }
