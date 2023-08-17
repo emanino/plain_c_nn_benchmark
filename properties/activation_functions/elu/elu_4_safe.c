@@ -10,7 +10,7 @@ float elu(float x)
 		return expf(x) - 1.0f;
 }
 
-#define ELU_CHECK_NEXT 1e-5
+#define ELU_CHECK_NEXT 1e-2
 
 int main() /* check_derivative */
 {

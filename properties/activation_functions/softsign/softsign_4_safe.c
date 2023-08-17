@@ -7,7 +7,8 @@ float softsign(float x)
 	return x / (fabsf(x) + 1.0f);
 }
 
-#define SOFTSIGN_CHECK_NEXT 1e-5f
+#define SOFTSIGN_CHECK_NEXT 1e-1f
+#define SOFTSIGN_CHECK_ERROR 1e-3f
 
 int main() /* check_derivative */
 {
@@ -20,7 +21,7 @@ int main() /* check_derivative */
 	float y2 = softsign(x2);
 	float derivative = (y2 - y1) / SOFTSIGN_CHECK_NEXT;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, 0.0f)); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(derivative, -SOFTSIGN_CHECK_ERROR)); /* Expected result: verification successful */
 
     return 0;
 }

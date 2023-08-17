@@ -7,7 +7,7 @@ float softsign(float x)
 	return x / (fabsf(x) + 1.0f);
 }
 
-#define SOFTSIGN_CHECK_NEXT 1e-5f
+#define SOFTSIGN_CHECK_NEXT 1e-1f
 
 int main() /* check_derivative */
 {

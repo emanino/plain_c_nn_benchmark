@@ -25,8 +25,7 @@ void softmax(const float* x, float* y, int n)
 		y[i] /= sum;
 }
 
-#define SOFTMAX_CHECK_ERROR 1e-10
-#define SOFTMAX_CHECK_NEXT 1e-5
+#define SOFTMAX_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing_size_4 */
 {

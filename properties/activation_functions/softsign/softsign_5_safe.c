@@ -14,7 +14,7 @@ int main() /* check_symmetry */
 	__VERIFIER_assume(isgreaterequal(x, 0));
 	
 	float y = softsign(x);
-	float z = softsign(-x);
+	float z = -softsign(-x);
 	
 	__VERIFIER_assert(y == z); /* Expected result: verification successful */
 
