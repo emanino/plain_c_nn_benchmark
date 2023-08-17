@@ -2,9 +2,7 @@
 
 #include <math.h>
 
-#define LOG_CHECK_NEXT 1e-5f
-#define LOG_CHECK_RANGE 100.0f
-#define LOG_CHECK_ERROR 1e-10f
+#define LOG_CHECK_NEXT 1e-2f
 
 int main() /* check_derivative */
 {
@@ -18,7 +16,6 @@ int main() /* check_derivative */
 	float derivative = (y2 - y1) / LOG_CHECK_NEXT;
 	
 	float d1 = 1.0f / x1; /* analytical derivative of log(x) at x = x1 */
-	float d2 = 1.0f / x2; /* analytical derivative of log(x) at x = x2 */
 	
 	__VERIFIER_assert(isgreaterequal(derivative, d1)); /* Expected result: verification failure */
 

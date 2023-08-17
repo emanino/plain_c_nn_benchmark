@@ -2,19 +2,18 @@
 
 #include <math.h>
 
-#define LOG_CHECK_NEXT 1e-5f
-#define LOG_CHECK_RANGE 100.0f
-#define LOG_CHECK_ERROR 1e-10f
+#define LOG_CHECK_ERROR 1e-8f
 
-int main() /* check_inverse_exact */
+int main() /* check_inverse */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, 0.0f) && islessequal(x, LOG_CHECK_RANGE)); /* Choose a range where precision is high */
+	__VERIFIER_assume(isgreaterequal(x, 0.0f));
 	
 	float y = expf(logf(x));
+	float r = fabsf(x - y) / (x + 1e-37f); /* relative error: avoid division by zero */
 	
-	__VERIFIER_assert(x == y); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(r, LOG_CHECK_ERROR)); /* Expected result: verification failure */
 
     return 0;
 }

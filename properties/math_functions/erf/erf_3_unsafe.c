@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#define ERF_CHECK_NEXT 1e-5f
+#define ERF_CHECK_NEXT 1e-2f
 
 /* The following constant has been truncated on purpose */
 #define ERF_CHECK_TWO_OVER_SQRT_PI 1.1283f // 1.1283791670955125738961589031215451716881012586579977136881714434f

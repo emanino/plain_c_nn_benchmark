@@ -2,9 +2,8 @@
 
 #include <math.h>
 
-#define LOG_CHECK_NEXT 1e-5f
-#define LOG_CHECK_RANGE 100.0f
-#define LOG_CHECK_ERROR 1e-10f
+#define LOG_CHECK_NEXT 1e-2f
+#define LOG_CHECK_DIFF 1e-3f
 
 int main() /* check_derivative */
 {
@@ -17,10 +16,10 @@ int main() /* check_derivative */
 	float y2 = logf(x2);
 	float derivative = (y2 - y1) / LOG_CHECK_NEXT;
 	
-	float d1 = 1.0f / x1; /* analytical derivative of log(x) at x = x1 */
 	float d2 = 1.0f / x2; /* analytical derivative of log(x) at x = x2 */
+	float diff = derivative - d2;
 	
-	__VERIFIER_assert(isgreaterequal(derivative, d2)); /* Expected result: verification successful */
+	__VERIFIER_assert(isgreaterequal(diff, -LOG_CHECK_DIFF)); /* Expected result: verification successful */
 
     return 0;
 }
