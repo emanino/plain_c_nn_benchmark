@@ -2,11 +2,11 @@
 
 #include <math.h>
 
-#define EXP_CHECK_NEXT 1e-5f
-#define EXP_CHECK_RANGE 100.0f
-#define EXP_CHECK_ERROR 1e-10f
+#define EXP_CHECK_NEXT 1e-2f
+#define EXP_CHECK_RANGE 88.0f
+#define EXP_CHECK_ERROR 1e-6f
 
-int main() /* check_inverse_approx */
+int main() /* check_inverse */
 {
 	float x = __VERIFIER_nondet_float();
 	

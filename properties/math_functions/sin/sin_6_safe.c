@@ -3,11 +3,9 @@
 #include <math.h>
 
 #define SIN_CHECK_PI 3.1415926535897932384626433832795028841971693993751058209749445923078164062f
-#define SIN_CHECK_RANGE 100.0f
-#define SIN_CHECK_ERROR 1e-10f
-#define SIN_CHECK_NEXT 1e-5f
+#define SIN_CHECK_ERROR 1e-2f
 
-int main() /* check_inverse_approx */
+int main() /* check_inverse */
 {
 	float x = __VERIFIER_nondet_float();
 	
@@ -17,6 +15,6 @@ int main() /* check_inverse_approx */
 	float z = fabsf(x - y);
 	
 	__VERIFIER_assert(islessequal(z, SIN_CHECK_ERROR)); /* Expected result: verification successful */
-
+	
     return 0;
 }

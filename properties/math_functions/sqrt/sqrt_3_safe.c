@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#define SQRT_CHECK_NEXT 1e-5
+#define SQRT_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing */
 {
