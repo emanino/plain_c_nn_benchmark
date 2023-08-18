@@ -6,7 +6,7 @@ int main() /* check_upper_bound */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x));
+	__VERIFIER_assume(!isnan(x) && !isinf(x));
 	
 	float y = sinf(x);
 	

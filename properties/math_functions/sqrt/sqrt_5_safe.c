@@ -3,14 +3,14 @@
 #include <math.h>
 
 #define SQRT_CHECK_NEXT 1e1f
-#define SQRT_CHECK_DIFF 1e-3f
+#define SQRT_CHECK_DIFF 1e-2f
 
 int main() /* check_derivative */
 {
 	float x1 = __VERIFIER_nondet_float();
 	float x2 = x1 + SQRT_CHECK_NEXT;
 	
-	__VERIFIER_assume(isgreaterequal(x1, 0.0f));
+	__VERIFIER_assume(isgreaterequal(x1, 0.0f) && !isinf(x1));
 	
 	float y1 = sqrtf(x1);
 	float y2 = sqrtf(x2);

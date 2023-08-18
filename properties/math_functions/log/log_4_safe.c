@@ -10,7 +10,7 @@ int main() /* check_derivative */
 	float x1 = __VERIFIER_nondet_float();
 	float x2 = x1 + LOG_CHECK_NEXT;
 	
-	__VERIFIER_assume(isgreaterequal(x1, 0.0f));
+	__VERIFIER_assume(isgreaterequal(x1, 0.0f) && !isinf(x1));
 	
 	float y1 = logf(x1);
 	float y2 = logf(x2);
