@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include <poly_approx/poly_16_16.h>
+#include <poly_approx/poly_64_64.h>
 
 int main()
 {
@@ -17,7 +17,7 @@ int main()
 	
 	/* call the neural network with non-deterministic input */
 	input_array[0] = x;
-	poly_16_16(&input_tensor, &output_tensor);
+	poly_64_64(&input_tensor, &output_tensor);
 	
 	/* compare the network output with an affine approximation of the ground truth */
 	float y = -2.637375000000004f * (x + 2.0f) - 0.5f;
