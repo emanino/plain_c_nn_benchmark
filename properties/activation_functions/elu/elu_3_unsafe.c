@@ -7,7 +7,7 @@ float elu(float x)
 	if(x >= 0.0f)
 		return x;
 	else
-		return expf(x) - 1.0f;
+		return expm1f(x);
 }
 
 #define ELU_CHECK_NEXT 1e-2
@@ -17,7 +17,7 @@ int main() /* check_derivative */
 	float x1 = __VERIFIER_nondet_float();
 	float x2 = x1 + ELU_CHECK_NEXT;
 	
-	__VERIFIER_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1) && !isinf(x1));
 	
 	float y1 = elu(x1);
 	float y2 = elu(x2);

@@ -7,7 +7,7 @@ float elu(float x)
 	if(x >= 0.0f)
 		return x;
 	else
-		return expf(x) - 1.0f;
+		return expm1f(x);
 }
 
 #define ELU_CHECK_NEXT 1e-5f

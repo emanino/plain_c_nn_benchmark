@@ -4,7 +4,7 @@
 
 float logistic(float x)
 {
-	return 0.5f * tanh(0.5f * x) + 0.5f;
+	return 0.5f * tanhf(0.5f * x) + 0.5f;
 }
 
 int main() /* check_lower_bound */

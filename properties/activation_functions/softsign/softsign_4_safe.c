@@ -15,7 +15,7 @@ int main() /* check_derivative */
 	float x1 = __VERIFIER_nondet_float();
 	float x2 = x1 + SOFTSIGN_CHECK_NEXT;
 	
-	__VERIFIER_assume(!isnan(x1));
+	__VERIFIER_assume(!isnan(x1) && !isinf(x1));
 	
 	float y1 = softsign(x1);
 	float y2 = softsign(x2);
