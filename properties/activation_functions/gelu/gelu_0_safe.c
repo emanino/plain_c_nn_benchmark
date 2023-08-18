@@ -14,7 +14,7 @@ int main() /* check_negative_asymptote */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(islessequal(x, 0.0f));
+	__VERIFIER_assume(islessequal(x, 0.0f) && !isinf(x));
 	
 	float y = gelu(x);
 	

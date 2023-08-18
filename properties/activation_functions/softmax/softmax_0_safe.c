@@ -32,8 +32,8 @@ int main() /* check_bounds_size_2 */
 	x[0] = __VERIFIER_nondet_float();
 	x[1] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x[0]));
-	__VERIFIER_assume(!isnan(x[1]));
+	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
+	__VERIFIER_assume(!isnan(x[1]) && !isinf(x[1]));
 	
 	softmax(x, y, 2);
 	

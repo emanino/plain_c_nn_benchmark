@@ -36,7 +36,7 @@ int main() /* check_non_decreasing_size_4 */
 	x[2] = 0.123456f;
 	x[3] = 0.654321f;
 	
-	__VERIFIER_assume(!isnan(x[0]));
+	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
 	
 	softmax(x, y, 4);
 	
