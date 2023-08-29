@@ -2,13 +2,25 @@
 
 A collection of neural networks implemented in plain C language, paired with formal specifications of their properties.
 
+## File Structure
+
+1. **./benchexec-extras** contains additional files for running benchexec.
+
+2. **./includes/keras2c** contains the implementation of several types of neural network layers. These are used by networks converted via the keras2c tool: currently, polynomial approximation and hopfield networks belong to this category.
+
+3. **./includes/musl_math** contains the MUSL mathematical library (except for complex number functions) in plain C. This has been extracted from the MUSL implementation of the C standard library.
+
+4. **./networks** contains the neural network code in plain C. All networks in  **/hopfield_nets** and **/poly_approx** depend on the keras2c layer described above. In contrast, all networks in **/reach_prob_density** and **/reinforcement_learning** have been converted with the onnx2c tool, which requires no dependencies.
+
+5. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition, a call to the neural network (or mathematical function) and a postcondition. The precondition and postcondition are expressed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
+
 ## Producing the benchmarks
 
 The resulting benchmark suite consists in single preprocessed files (i.e., `*.i`*) that includes all libraries (except verification intrinsics) and a benchmark `*.yml` description for `benchexec`.
 
 ### Dependencies
 
-On an Ubuntu 22.04, the following command will install all dependecies:
+On an Ubuntu 22.04, the following command will install all dependencies:
 
 `apt install build-essential cmake gcc-multilib`
 
@@ -26,22 +38,12 @@ make -j4 install
 
 The benchmarks will be inside `./build/export`
 
-## File Structure
-
-1. **./includes/keras2c** contains the implementation of several types of neural network layers. These are used by networks converted via the keras2c tool: currently, polynomial approximation and hopfield networks belong to this category.
-
-2. **./includes/musl_math** contains the MUSL mathematical library (except for complex number functions) in plain C. This has been extracted from the MUSL implementation of the C standard library.
-
-3. **./networks** contains the neural network code in plain C. All networks in  **/hopfield_nets** and **/poly_approx** depend on the keras2c layer described above. In contrast, all networks in **/reach_prob_density** and **/reinforcement_learning** have been converted with the onnx2c tool, which requires no dependencies.
-
-4. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition, a call to the neural network (or mathematical function) and a postcondition. The precondition and postcondition are expressed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
-
 ## Compiling manually
 
-. All benchmarks depends on the implementation of `includes/verifier_functions.h`, tools that already support SV-COMP standard should work out-of-box. Other tools will need to implement their custom
-version of the library and link it at the `gcc` invokation. See `includes/verifier_stubs.c` for an example. and they all depend on an implementation of the verifier. 
+All benchmarks depends on a verifier-specific implementation of `includes/verifier_functions.h`. Tools that already support SV-COMP standard should work out-of-box. Other tools will need to implement their custom
+version of the library and link it at the `gcc` invokation. See `includes/verifier_stubs.c` for an example.
 
-Finally, each category of our benchmark has different dependencies
+Finally, each category of our benchmark has different dependencies. Here, we include explicit dependencies to math.h functions, as implemented by the MUSL library in **./includes/musl_math**.
 
 ### Activation Functions
 
