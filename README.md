@@ -10,9 +10,11 @@ A collection of neural networks implemented in plain C language, paired with for
 
 3. **./includes/musl_math** contains the MUSL mathematical library (except for complex number functions) in plain C. This has been extracted from the MUSL implementation of the C standard library.
 
-4. **./networks** contains the neural network code in plain C. All networks in  **/hopfield_nets** and **/poly_approx** depend on the keras2c layer described above. In contrast, all networks in **/reach_prob_density** and **/reinforcement_learning** have been converted with the onnx2c tool, which requires no dependencies.
+4. **./models** contains the reference Keras and ONNX models for the networks in **/hopfield_nets** and **/poly_approx**. These models are not part of the main benchmarks.
 
-5. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition, a call to the neural network (or mathematical function) and a postcondition. The precondition and postcondition are expressed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
+5. **./networks** contains the neural network code in plain C. All networks in  **/hopfield_nets** and **/poly_approx** depend on the keras2c layer described above. In contrast, all networks in **/reach_prob_density** and **/reinforcement_learning** have been converted with the onnx2c tool, which requires no dependencies.
+
+6. **./properties** contains the safety properties. Each property is specified as a main() C function with a precondition, a call to the neural network (or mathematical function) and a postcondition. The precondition and postcondition are expressed in ESBMC format. Each filename contains the expected result of the verification process: unsafe means that there exists at least one input to the neural network (or mathematical function) that lies in the precondition region but violates the postcondition.
 
 ## Producing the benchmarks
 
