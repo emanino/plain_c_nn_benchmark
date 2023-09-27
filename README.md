@@ -2,6 +2,8 @@
 
 A collection of neural networks implemented in plain C language, paired with formal specifications of their properties.
 
+For more information about how the benchmarks were created, read our short paper at: https://arxiv.org/abs/2309.03617
+
 ## File Structure
 
 1. **./benchexec-extras** contains additional files for running benchexec.
