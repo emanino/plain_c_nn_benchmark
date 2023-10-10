@@ -51,7 +51,7 @@ Finally, each category of our benchmark has different dependencies. Here, we inc
 
 ### Activation Functions
 
-1. **elu:** `gcc <verifier_functions_implementation.c> ./properties/activation_functions/elu/elu_0_safe.c ./includes/musl_math/expf.c -I ./includes/musl_math/`
+1. **elu:** `gcc <verifier_functions_implementation.c> ./properties/activation_functions/elu/elu_0_safe.c ./includes/musl_math/expm1f.c -I ./includes/musl_math/`
 
 3. **gelu:** `gcc <verifier_functions_implementation.c> ./properties/activation_functions/gelu/gelu_5_unsafe.c ./includes/musl_math/erff.c ./includes/musl_math/fabsf.c ./includes/musl_math/expf.c -I ./includes/musl_math/`
 
