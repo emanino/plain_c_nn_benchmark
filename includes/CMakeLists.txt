@@ -24,3 +24,6 @@ endif()
 # STUB
 
 add_library(stub verifier_stubs.c)
+
+# The almagamations rely on a local verifier_functions header for compilation.
+file(COPY verifier_functions.h DESTINATION ${CMAKE_BINARY_DIR}/verifier_functions.h)
