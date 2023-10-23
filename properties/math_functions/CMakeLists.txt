@@ -7,7 +7,7 @@ foreach(benchmark ${MATH_C})
   generate_amalgamation(benchmark ${filename}-amalgamation)
   generate_benchmark_yml(${filename}-amalgamation)
   install(FILES ${CMAKE_BINARY_DIR}/${filename}-amalgamation.i
-    DESTINATION ${CMAKE_BINARY_DIR}/export/math_functions/)
-  install(FILES ${CMAKE_BINARY_DIR}/${filename}-amalgamation.yml
+                ${CMAKE_BINARY_DIR}/${filename}-amalgamation.c
+                ${CMAKE_BINARY_DIR}/${filename}-amalgamation.yml
     DESTINATION ${CMAKE_BINARY_DIR}/export/math_functions/)
 endforeach()

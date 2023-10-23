@@ -12,8 +12,8 @@ foreach(width ${HOPFIELD_MODES})
     generate_amalgamation(BENCHMARKS_WITH_DEPS ${filename}-amalgamation)
     generate_benchmark_yml(${filename}-amalgamation)
     install(FILES ${CMAKE_BINARY_DIR}/${filename}-amalgamation.i
-      DESTINATION ${CMAKE_BINARY_DIR}/export/hopfield_nets/)
-    install(FILES ${CMAKE_BINARY_DIR}/${filename}-amalgamation.yml
+                  ${CMAKE_BINARY_DIR}/${filename}-amalgamation.c
+                  ${CMAKE_BINARY_DIR}/${filename}-amalgamation.yml
       DESTINATION ${CMAKE_BINARY_DIR}/export/hopfield_nets/)
   endforeach()
 
