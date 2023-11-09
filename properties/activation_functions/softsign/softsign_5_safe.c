@@ -11,7 +11,7 @@ int main() /* check_symmetry */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, 0) && !isinf(x));
+	__VERIFIER_assume(isgreaterequal(x, 0.0f) && !isinf(x));
 	
 	float y = softsign(x);
 	float z = -softsign(-x);
