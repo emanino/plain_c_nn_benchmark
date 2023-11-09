@@ -6,7 +6,7 @@ int main() /* check_symmetry */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, 0));
+	__VERIFIER_assume(isgreaterequal(x, 0.0f));
 	
 	float y = tanhf(x);
 	float z = -tanhf(-x);
