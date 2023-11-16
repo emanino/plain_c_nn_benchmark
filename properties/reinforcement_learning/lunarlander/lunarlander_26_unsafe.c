@@ -20,7 +20,7 @@ int main()
 
 	__VERIFIER_assume(tensor_input[0][0] >= -0.7596881158570574f && tensor_input[0][0] <= -0.6992308041429425f);
 	__VERIFIER_assume(tensor_input[0][1] >= 0.01776487014294256f && tensor_input[0][1] <= 0.07822218185705744f);
-	__VERIFIER_assume(tensor_input[0][2] >= 8.177014294255894f && tensor_input[0][2] <= 0.06053908185705745f);
+	__VERIFIER_assume(tensor_input[0][2] >= 8.177014294255894e-05f && tensor_input[0][2] <= 0.06053908185705745f);
 	__VERIFIER_assume(tensor_input[0][3] >= -0.07765323285705744f && tensor_input[0][3] <= -0.01719592114294256f);
 	__VERIFIER_assume(tensor_input[0][4] >= -0.039961814857057444f && tensor_input[0][4] <= 0.02049549685705744f);
 	__VERIFIER_assume(tensor_input[0][5] >= -0.10178652585705744f && tensor_input[0][5] <= -0.04132921414294255f);
