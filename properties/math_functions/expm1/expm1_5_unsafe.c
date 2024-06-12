@@ -2,20 +2,19 @@
 
 #include <math.h>
 
-#define EXP_CHECK_NEXT 1e-2f
-#define EXP_CHECK_RANGE 88.0f
-#define EXP_CHECK_ERROR 1e-9f
+#define EXPM1_CHECK_RANGE 88.0f
+#define EXPM1_CHECK_ERROR 1e-8f
 
 int main() /* check_inverse */
 {
 	float x = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreaterequal(x, -EXP_CHECK_RANGE) && islessequal(x, EXP_CHECK_RANGE)); /* Choose a range where precision is high */
+	__VERIFIER_assume(isgreaterequal(x, 0.0f) && islessequal(x, EXPM1_CHECK_RANGE)); /* Choose a range where precision is high */
 	
 	float y = log1pf(expm1f(x));
 	float z = fabsf(x - y);
 	
-	__VERIFIER_assert(islessequal(z, EXP_CHECK_ERROR)); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(z, EXPM1_CHECK_ERROR)); /* Expected result: verification failure */
 
     return 0;
 }
