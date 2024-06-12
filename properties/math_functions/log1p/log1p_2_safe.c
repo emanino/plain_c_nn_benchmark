@@ -2,12 +2,12 @@
 
 #include <math.h>
 
-#define LOG_CHECK_NEXT 1e-5f
+#define LOG1P_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing */
 {
 	float x1 = __VERIFIER_nondet_float();
-	float x2 = x1 + LOG_CHECK_NEXT;
+	float x2 = x1 + LOG1P_CHECK_NEXT;
 	
 	__VERIFIER_assume(isgreaterequal(x1, -1.0f));
 	
