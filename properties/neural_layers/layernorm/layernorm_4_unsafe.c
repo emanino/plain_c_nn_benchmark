@@ -19,7 +19,7 @@ void layernorm(const float* x, float* y, float gamma, float beta, int n)
 		float diff = x[i] - mean;
 		std += diff * diff;
 	}
-	std = sqrtf(std / ((float) n - 1.0f))
+	std = sqrtf(std / ((float) n - 1.0f)) + 1e-8;
 	
 	/* normalise input */
 	for(i = 0; i < n; ++i)
@@ -35,7 +35,7 @@ int main() /* check_non_decreasing_size_2 */
 	float x[INPUT_SIZE], y[INPUT_SIZE];
 
 	x[0] = __VERIFIER_nondet_float();
-	x[1] = x[0] + MAXPOOL_CHECK_NEXT;
+	x[1] = x[0] + LAYERNORM_CHECK_NEXT;
 	
 	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
 	
