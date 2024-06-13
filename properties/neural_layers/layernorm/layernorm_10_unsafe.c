@@ -19,7 +19,7 @@ void layernorm(const float* x, float* y, float gamma, float beta, int n)
 		float diff = x[i] - mean;
 		std += diff * diff;
 	}
-	std = sqrtf(std / ((float) n - 1.0f))
+	std = sqrtf(std / ((float) n - 1.0f)) + 1e-8;
 	
 	/* normalise input */
 	for(i = 0; i < n; ++i)
@@ -27,6 +27,8 @@ void layernorm(const float* x, float* y, float gamma, float beta, int n)
 }
 
 #define INPUT_SIZE 6
+
+#define LAYERNORM_CHECK_RANGE 1e18f
 
 int main() /* check_bound_size_6 */
 {
@@ -39,12 +41,12 @@ int main() /* check_bound_size_6 */
 	x[4] = __VERIFIER_nondet_float();
 	x[5] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
-	__VERIFIER_assume(!isnan(x[1]) && !isinf(x[1]));
-	__VERIFIER_assume(!isnan(x[2]) && !isinf(x[2]));
-	__VERIFIER_assume(!isnan(x[3]) && !isinf(x[3]));
-	__VERIFIER_assume(!isnan(x[4]) && !isinf(x[4]));
-	__VERIFIER_assume(!isnan(x[5]) && !isinf(x[5]));
+	__VERIFIER_assume(isgreater(x[0], -LAYERNORM_CHECK_RANGE) && isless(x[0], LAYERNORM_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[1], -LAYERNORM_CHECK_RANGE) && isless(x[1], LAYERNORM_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[2], -LAYERNORM_CHECK_RANGE) && isless(x[2], LAYERNORM_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[3], -LAYERNORM_CHECK_RANGE) && isless(x[3], LAYERNORM_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[4], -LAYERNORM_CHECK_RANGE) && isless(x[4], LAYERNORM_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[5], -LAYERNORM_CHECK_RANGE) && isless(x[5], LAYERNORM_CHECK_RANGE));
 	
 	layernorm(x, y, 1.0f, 0.0f, INPUT_SIZE);
 	
