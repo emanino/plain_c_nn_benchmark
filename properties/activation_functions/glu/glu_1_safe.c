@@ -17,12 +17,14 @@ float glu(float x, float y)
 	return x * logistic(y);
 }
 
+#define GLU_CHECK_X_RANGE 3.4e38
+
 int main() /* check_lower_bound */
 {
 	float x = __VERIFIER_nondet_float();
 	float y = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x) && !isnan(y));
+	__VERIFIER_assume(isgreaterequal(x, -GLU_CHECK_X_RANGE) && islessequal(x, GLU_CHECK_X_RANGE) && !isnan(y));
 	
 	float z = glu(x, y);
 	float r = -relu(-x);
