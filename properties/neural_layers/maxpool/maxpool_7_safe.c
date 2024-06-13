@@ -36,7 +36,7 @@ int main() /* check_bound_size_4 */
 	float r = x[0];
 	for(i = 1; i < 4; ++i)
 		if(r < x[i])
-			x[i] = r;
+			r = x[i];
 	
 	__VERIFIER_assert(islessequal(y[2], r)); /* Expected result: verification successful */
 

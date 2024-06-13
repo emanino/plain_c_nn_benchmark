@@ -22,8 +22,8 @@ int main() /* check_monotonicity_size_8 */
 	float x[8], y[5];
 	
 	x[0] = __VERIFIER_nondet_float();
-	x[1] = __VERIFIER_nondet_float();
-	x[2] = x[0] + MAXPOOL_CHECK_NEXT;
+	x[1] = x[0] + MAXPOOL_CHECK_NEXT;
+	x[2] = __VERIFIER_nondet_float();
 	x[3] = __VERIFIER_nondet_float();
 	x[4] = __VERIFIER_nondet_float();
 	x[5] = -0.123456f;
@@ -37,7 +37,7 @@ int main() /* check_monotonicity_size_8 */
 	
 	maxpool(x, y, 8, 4, 1);
 	
-	__VERIFIER_assert(islessequal(y[0], y[1])); /* Expected result: verification failure */
+	__VERIFIER_assert(islessequal(y[0], y[2])); /* Expected result: verification failure */
 
     return 0;
 }
