@@ -17,7 +17,7 @@ float glu(float x, float y)
 	return x * logistic(y);
 }
 
-#define GLU_CHECK_X_RANGE 3.4e38
+#define GLU_CHECK_X_RANGE 3.4e38f
 
 int main() /* check_lower_bound */
 {

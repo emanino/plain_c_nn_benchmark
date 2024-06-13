@@ -7,7 +7,7 @@ float gauss(float x)
 	return expf(-x * x / 2.0f);
 }
 
-#define GAUSSIAN_CHECK_RANGE 1e38
+#define GAUSSIAN_CHECK_RANGE 1e38f
 #define GAUSSIAN_CHECK_NEXT 1e-3f
 #define GAUSSIAN_CHECK_DIFF 1e-5f
 
