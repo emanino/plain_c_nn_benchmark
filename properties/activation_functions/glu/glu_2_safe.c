@@ -12,7 +12,7 @@ float glu(float x, float y)
 	return x * logistic(y);
 }
 
-#define GLU_CHECK_X_RANGE 3.4e38
+#define GLU_CHECK_X_RANGE 3.4e38f
 #define GLU_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing_in_x */
