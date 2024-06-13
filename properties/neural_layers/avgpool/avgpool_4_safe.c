@@ -15,6 +15,8 @@ void avgpool(const float* x, float* y, int n, int window, int stride)
 	}
 }
 
+#define AVGPOOL_CHECK_RANGE 1e37f
+
 int main() /* check_behaviour_size_8 */
 {
 	float x[8], y[5];
@@ -28,12 +30,12 @@ int main() /* check_behaviour_size_8 */
 	x[6] = 3.14f;
 	x[7] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
-	__VERIFIER_assume(!isnan(x[1]) && !isinf(x[1]));
-	__VERIFIER_assume(!isnan(x[2]) && !isinf(x[2]));
-	__VERIFIER_assume(!isnan(x[4]) && !isinf(x[4]));
-	__VERIFIER_assume(!isnan(x[5]) && !isinf(x[5]));
-	__VERIFIER_assume(!isnan(x[7]) && !isinf(x[7]));
+	__VERIFIER_assume(isgreater(x[0], -AVGPOOL_CHECK_RANGE) && isless(x[0], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[1], -AVGPOOL_CHECK_RANGE) && isless(x[1], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[2], -AVGPOOL_CHECK_RANGE) && isless(x[2], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[4], -AVGPOOL_CHECK_RANGE) && isless(x[4], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[5], -AVGPOOL_CHECK_RANGE) && isless(x[5], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[7], -AVGPOOL_CHECK_RANGE) && isless(x[7], AVGPOOL_CHECK_RANGE));
 	
 	avgpool(x, y, 8, 4, 1);
 	

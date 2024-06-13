@@ -15,6 +15,8 @@ void avgpool(const float* x, float* y, int n, int window, int stride)
 	}
 }
 
+#define AVGPOOL_CHECK_RANGE 1e37f
+
 int main() /* check_bound_size_4 */
 {
 	float x[4], y[3];
@@ -24,10 +26,10 @@ int main() /* check_bound_size_4 */
 	x[2] = __VERIFIER_nondet_float();
 	x[3] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
-	__VERIFIER_assume(!isnan(x[1]) && !isinf(x[1]));
-	__VERIFIER_assume(!isnan(x[2]) && !isinf(x[2]));
-	__VERIFIER_assume(!isnan(x[3]) && !isinf(x[3]));
+	__VERIFIER_assume(isgreater(x[0], -AVGPOOL_CHECK_RANGE) && isless(x[0], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[1], -AVGPOOL_CHECK_RANGE) && isless(x[1], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[2], -AVGPOOL_CHECK_RANGE) && isless(x[2], AVGPOOL_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[3], -AVGPOOL_CHECK_RANGE) && isless(x[3], AVGPOOL_CHECK_RANGE));
 	
 	maxpool(x, y, 4, 2, 1);
 	

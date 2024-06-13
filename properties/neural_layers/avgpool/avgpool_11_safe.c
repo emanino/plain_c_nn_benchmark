@@ -15,7 +15,7 @@ void avgpool(const float* x, float* y, int n, int window, int stride)
 	}
 }
 
-#define MAXPOOL_CHECK_NEXT 1e-5f
+#define AVGPOOL_CHECK_NEXT 1e-5f
 
 int main() /* check_monotonicity_size_4 */
 {
@@ -23,7 +23,7 @@ int main() /* check_monotonicity_size_4 */
 
 	x[0] = __VERIFIER_nondet_float();
 	x[1] = 0.123456f;
-	x[2] = x[0] + MAXPOOL_CHECK_NEXT;
+	x[2] = x[0] + AVGPOOL_CHECK_NEXT;
 	x[3] = 0.654321f;
 	
 	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
