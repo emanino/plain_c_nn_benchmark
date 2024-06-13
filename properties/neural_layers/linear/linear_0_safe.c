@@ -2,8 +2,11 @@
 
 #include <math.h>
 
+#define INPUT_SIZE 2
+#define OUTPUT_SIZE 2
+
 /* simplified linear layer */
-void linear(const float* x, float* y, const float* W, const float* b, int m, int n)
+void linear(const float* x, float* y, const float W[OUTPUT_SIZE][INPUT_SIZE], const float* b, int m, int n)
 {
 	int i, j;
 	
@@ -13,9 +16,6 @@ void linear(const float* x, float* y, const float* W, const float* b, int m, int
 			y[i] += W[j][i] * x[j];
 	}
 }
-
-#define INPUT_SIZE 2
-#define OUTPUT_SIZE 2
 
 int main() /* check_identity_size_2 */
 {
