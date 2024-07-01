@@ -6,11 +6,11 @@ option(VERBOSE_CONFIGURATION "Enable verbose mode during configuration (mostly f
 option(EXPORT_SUITE "Export benchmarks into SV-COMP compliant format" ON)
 
 # Includes
-include_directories(includes)
+include_directories(extern)
 include_directories(networks)
 
 # Libraries
-add_subdirectory(includes) # (The include folder is also a lib!)
+add_subdirectory(extern) # (The include folder is also a lib!)
 add_subdirectory(networks) 
 
 # Benchmarks

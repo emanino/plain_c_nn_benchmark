@@ -2,7 +2,7 @@
 
 set(POLY_MODES "poly_16_16_16;poly_32_32_32_32;poly_8_8_8;poly_1024;poly_16_16_16_16;poly_4_4_4_4;poly_8_8_8_8;poly_128;poly_256;poly_512;poly_128_128;poly_32_32;poly_64_64;poly_16_16;poly_32_32_32;poly_64_64_64")
 
-set(POLY_KERAS "${CMAKE_SOURCE_DIR}/includes/keras2c/k2c_activations.c;${CMAKE_SOURCE_DIR}/includes/keras2c/k2c_core_layers.c;${CMAKE_SOURCE_DIR}/includes/keras2c/k2c_helper_functions.c") 
+set(POLY_KERAS "${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_activations.c;${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_core_layers.c;${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_helper_functions.c") 
 
 foreach(width ${POLY_MODES})
   # TODO: fixed paths should be libraries
