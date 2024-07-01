@@ -47,7 +47,7 @@ function(generate_amalgamation FILES NAME)
  # Just to check whether it compiles...
  add_custom_target(
    ${NAME} ALL
-   COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/networks -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
+   COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
 #   BYPRODUCT ${CMAKE_BINARY_DIR}/${NAME}.i
   DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
   COMMENT "Producing ${NAME}.i"

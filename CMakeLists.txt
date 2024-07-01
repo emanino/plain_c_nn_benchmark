@@ -7,11 +7,9 @@ option(EXPORT_SUITE "Export benchmarks into SV-COMP compliant format" ON)
 
 # Includes
 include_directories(extern)
-include_directories(networks)
 
 # Libraries
 add_subdirectory(extern) # (The include folder is also a lib!)
-add_subdirectory(networks) 
 
 # Benchmarks
 add_subdirectory(benchmarks)
