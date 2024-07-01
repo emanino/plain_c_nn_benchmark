@@ -93,3 +93,8 @@ add_subdirectory(poly_approx)
 add_subdirectory(reach_prob_density)
 add_subdirectory(reinforcement_learning)
 
+####################
+# NETWORKS LIBRARY #
+####################
+add_library(NETWORKS INTERFACE)
+target_link_libraries(NETWORKS INTERFACE hopfield_lib poly_approx_lib reach_prob_lib reinforcement_lib)
