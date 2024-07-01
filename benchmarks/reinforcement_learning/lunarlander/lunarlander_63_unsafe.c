@@ -1,0 +1,35 @@
+#include <verifier_functions.h>
+
+#include <math.h>
+
+void entry(const float tensor_input[1][8], float tensor_output[1][4]);
+
+int main()
+{
+	float tensor_input[1][8];
+	float tensor_output[1][4];
+
+	tensor_input[0][0] = __VERIFIER_nondet_float();
+	tensor_input[0][1] = __VERIFIER_nondet_float();
+	tensor_input[0][2] = __VERIFIER_nondet_float();
+	tensor_input[0][3] = __VERIFIER_nondet_float();
+	tensor_input[0][4] = __VERIFIER_nondet_float();
+	tensor_input[0][5] = __VERIFIER_nondet_float();
+	tensor_input[0][6] = __VERIFIER_nondet_float();
+	tensor_input[0][7] = __VERIFIER_nondet_float();
+
+	__VERIFIER_assume(tensor_input[0][0] >= -0.9607981250000003f && tensor_input[0][0] <= -0.8931549949999996f);
+	__VERIFIER_assume(tensor_input[0][1] >= 0.04572882499999967f && tensor_input[0][1] <= 0.11337195500000033f);
+	__VERIFIER_assume(tensor_input[0][2] >= 0.035068694999999664f && tensor_input[0][2] <= 0.10271182500000033f);
+	__VERIFIER_assume(tensor_input[0][3] >= -0.053725426000000326f && tensor_input[0][3] <= 0.013917704000000333f);
+	__VERIFIER_assume(tensor_input[0][4] >= -0.44269673500000034f && tensor_input[0][4] <= -0.3750536049999997f);
+	__VERIFIER_assume(tensor_input[0][5] >= -0.03382155939838693f && tensor_input[0][5] <= 0.03382157060161373f);
+	__VERIFIER_assume(tensor_input[0][6] >= 0.9661784349999997f && tensor_input[0][6] <= 1.0338215650000002f);
+	__VERIFIER_assume(tensor_input[0][7] >= 0.9661784349999997f && tensor_input[0][7] <= 1.0338215650000002f);
+
+	entry(tensor_input, tensor_output);
+
+	__VERIFIER_assert(!((tensor_output[0][2] <= tensor_output[0][3])));
+
+	return 0;
+}
