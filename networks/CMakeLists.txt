@@ -1,14 +1,3 @@
-############
-# HOPFIELD #
-############
-file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS hopfield_nets/*.c)
-
-if(VERBOSE_CONFIGURATION)
-  message("HOPFIELD lib: ${HOPFIELD_C}")
-endif()
-
-add_library(hopfield_lib ${HOPFIELD_C})
-target_link_libraries(hopfield_lib keras_lib)
 
 ############################
 # POLYNOMIAL APPROXIMATION #
