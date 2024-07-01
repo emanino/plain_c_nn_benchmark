@@ -1,15 +1,5 @@
 
 
-######################
-# REACH PROB DENSITY #
-######################
-file(GLOB_RECURSE REACH_PROB_C CONFIGURE_DEPENDS reach_prob_density/*.c)
-
-if(VERBOSE_CONFIGURATION)
-  message("REACH PROB DENSITY lib: ${REACH_PROB_C}")
-endif()
-
-add_library(reach_prob_lib ${REACH_PROB_C})
 
 ##########################
 # REINFORCEMENT LEARNING #
