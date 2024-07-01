@@ -1,8 +1,14 @@
-# TODO: there might be a better way to define this path besides putting explicit paths :(
-#       maybe adding a library and using `get_property` for the soures.
-set(HOPFIELD_KERAS "${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_activations.c;${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_helper_functions.c;${CMAKE_SOURCE_DIR}/extern/keras2c/k2c_recurrent_layers.c")
+############
+# HOPFIELD #
+############
+include_directories(c_networks)
+file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS c_networks/hopfield_nets/*.c)
 
-set(HOPFIELD_MODES "w4;w8;w16;w32;w64")
+if(VERBOSE_CONFIGURATION)
+  message("HOPFIELD lib: ${HOPFIELD_C}")
+endif()
 
-add_subdirectory(tanh)
-add_subdirectory(softsign)
+add_library(hopfield_lib ${HOPFIELD_C})
+target_link_libraries(hopfield_lib keras_lib)
+
+add_subdirectory(safety_properties)
