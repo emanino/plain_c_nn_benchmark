@@ -14,7 +14,7 @@ add_subdirectory(extern) # (The include folder is also a lib!)
 add_subdirectory(networks) 
 
 # Benchmarks
-add_subdirectory(properties)
+add_subdirectory(benchmarks)
 
 # Benchexec Extras
 add_subdirectory(benchexec-extras)
