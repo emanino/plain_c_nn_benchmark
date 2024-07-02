@@ -96,6 +96,7 @@ add_subdirectory(reach_prob_density)
 add_subdirectory(reinforcement_learning)
 add_subdirectory(neural_layers)
 add_subdirectory(sat_relu)
+add_subdirectory(lipschitz_bounded)
 ####################
 # NETWORKS LIBRARY #
 ####################
