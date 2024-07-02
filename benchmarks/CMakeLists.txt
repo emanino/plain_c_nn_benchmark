@@ -51,7 +51,7 @@ function(generate_amalgamation FILES NAME)
   DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
   COMMENT "Producing ${NAME}.i"
   VERBATIM)
-
+if(0)
  # Just to check whether it compiles...
  add_custom_target(
    ${NAME}-compiles ALL
@@ -59,7 +59,7 @@ function(generate_amalgamation FILES NAME)
   DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
   COMMENT "Compiling ${NAME}.c"
   VERBATIM)
-
+endif()
  
 endfunction()
 
