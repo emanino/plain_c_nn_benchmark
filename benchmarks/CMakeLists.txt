@@ -91,7 +91,7 @@ add_subdirectory(math_functions)
 add_subdirectory(poly_approx)
 add_subdirectory(reach_prob_density)
 add_subdirectory(reinforcement_learning)
-
+add_subdirectory(neural_layers)
 ####################
 # NETWORKS LIBRARY #
 ####################
