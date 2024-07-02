@@ -58,9 +58,11 @@ endfunction()
 # Function to construct the YML
 function(generate_benchmark_yml BENCHMARK)
   string(FIND ${BENCHMARK} "_safe" IS_SAFE)
-  if(${IS_SAFE} EQUAL -1)
+  string(FIND ${BENCHMARK} "_unsat" IS_UNSAT)
+  if((${IS_SAFE} EQUAL -1) AND (${IS_UNSAT} EQUAL -1))
     string(FIND ${BENCHMARK} "_unsafe" IS_UNSAFE)
-    if(${IS_UNSAFE} EQUAL -1)
+    string(FIND ${BENCHMARK} "_sat" IS_SAT)
+    if((${IS_UNSAFE} EQUAL -1) AND (${IS_SAT} EQUAL -1))
       message(FATAL_ERROR "${BENCHMARK} is neither safe or unsafe")
     else()
       set(EXPECTED "false")
@@ -93,6 +95,7 @@ add_subdirectory(poly_approx)
 add_subdirectory(reach_prob_density)
 add_subdirectory(reinforcement_learning)
 add_subdirectory(neural_layers)
+add_subdirectory(sat_relu)
 ####################
 # NETWORKS LIBRARY #
 ####################
