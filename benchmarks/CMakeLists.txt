@@ -35,13 +35,12 @@ endif()
 # Function to combine multiple C sources into one preprocessed .i
 function(generate_amalgamation FILES NAME)
   set(DESTINATION ${CMAKE_BINARY_DIR}/${NAME}.c)
-  file(WRITE ${DESTINATION}) # Create the file
 
  foreach(C IN LISTS ${FILES})
    file(READ ${C} FILE_CONTENT)
-   string(REPLACE "\<verifier_functions.h\>" "\"verifier_functions.h\"" PREPROCESS_CONTENT ${FILE_CONTENT}) 
    # Note: We need to force the input to be strings (using quotes) due to CMake considering ';' as a list separator.
-   file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
+   string(REPLACE "\<verifier_functions.h\>" "\"verifier_functions.h\"" PREPROCESS_CONTENT "${FILE_CONTENT}")
+   file(CONFIGURE OUTPUT ${DESTINATION} CONTENT "${PREPROCESS_CONTENT}" ESCAPE_QUOTES)
  endforeach()
 
  # Just to check whether it compiles...
