@@ -37,7 +37,7 @@ int main() /* check_bound_size_8 */
 	__VERIFIER_assume(isgreater(x[5], -AVGPOOL_CHECK_RANGE) && isless(x[5], AVGPOOL_CHECK_RANGE));
 	__VERIFIER_assume(isgreater(x[7], -AVGPOOL_CHECK_RANGE) && isless(x[7], AVGPOOL_CHECK_RANGE));
 	
-	maxpool(x, y, 8, 4, 1);
+	avgpool(x, y, 8, 4, 1);
 	
 	/* compute the min value overall */
 	int i;
