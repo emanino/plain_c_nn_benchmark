@@ -35,22 +35,32 @@ endif()
 # Function to combine multiple C sources into one preprocessed .i
 function(generate_amalgamation FILES NAME)
   set(DESTINATION ${CMAKE_BINARY_DIR}/${NAME}.c)
+  file(WRITE ${DESTINATION}) # Create the file
 
  foreach(C IN LISTS ${FILES})
    file(READ ${C} FILE_CONTENT)
    # Note: We need to force the input to be strings (using quotes) due to CMake considering ';' as a list separator.
    string(REPLACE "\<verifier_functions.h\>" "\"verifier_functions.h\"" PREPROCESS_CONTENT "${FILE_CONTENT}")
-   file(CONFIGURE OUTPUT ${DESTINATION} CONTENT "${PREPROCESS_CONTENT}" ESCAPE_QUOTES)
+   file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
  endforeach()
 
- # Just to check whether it compiles...
+
  add_custom_target(
    ${NAME} ALL
    COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
-#   BYPRODUCT ${CMAKE_BINARY_DIR}/${NAME}.i
   DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
   COMMENT "Producing ${NAME}.i"
   VERBATIM)
+
+ # Just to check whether it compiles...
+ add_custom_target(
+   ${NAME}-compiles ALL
+   COMMAND "clang"  ${CMAKE_BINARY_DIR}/${NAME}.c -I${CMAKE_BINARY_DIR}/ ${CMAKE_BINARY_DIR}/verifier_stubs.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks 
+  DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
+  COMMENT "Compiling ${NAME}.c"
+  VERBATIM)
+
+ 
 endfunction()
 
 
