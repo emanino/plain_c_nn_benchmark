@@ -44,7 +44,7 @@ int main() /* check_bound_size_8 */
 	float r = x[0];
 	for(i = 1; i < 8; ++i)
 		if(r > x[i])
-			x[i] = r;
+			r = x[i];
 	
 	__VERIFIER_assert(y[2] == r); /* Expected result: verification failure */
 

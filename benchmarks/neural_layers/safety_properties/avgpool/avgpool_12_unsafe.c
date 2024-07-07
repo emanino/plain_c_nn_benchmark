@@ -37,7 +37,7 @@ int main() /* check_monotonicity_size_8 */
 	
 	avgpool(x, y, 8, 4, 1);
 	
-	__VERIFIER_assert(islessequal(y[0], y[1])); /* Expected result: verification successful */
+	__VERIFIER_assert(islessequal(y[0], y[1])); /* Expected result: verification failure */
 
     return 0;
 }
