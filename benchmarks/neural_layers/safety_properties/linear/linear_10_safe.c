@@ -2,7 +2,7 @@
 
 #include <math.h>
 
-#define INPUT_SIZE 8
+#define INPUT_SIZE 6
 #define OUTPUT_SIZE 2
 
 /* simplified linear layer */
@@ -13,18 +13,18 @@ void linear(const float* x, float* y, const float W[OUTPUT_SIZE][INPUT_SIZE], co
 	for(i = 0; i < n; ++i) {
 		y[i] = b[i];
 		for(j = 0; j < m; ++j)
-			y[i] += W[j][i] * x[j];
+			y[i] += W[i][j] * x[j];
 	}
 }
 
 #define LINEAR_CHECK_RANGE 1e37f
 
-int main() /* check_rectangular_size_8 */
+int main() /* check_rectangular_size_6 */
 {
 	float x[INPUT_SIZE], y[OUTPUT_SIZE];
 	
-	float W[OUTPUT_SIZE][INPUT_SIZE] = {{ 2.3f,  2.3f,  2.3f,  2.3f, -2.3f, -2.3f, -2.3f, -2.3f},
-										{-2.3f, -2.3f, -2.3f, -2.3f,  2.3f,  2.3f,  2.3f,  2.3f}};
+	float W[OUTPUT_SIZE][INPUT_SIZE] = {{ 2.3f,  2.3f,  2.3f, -2.3f, -2.3f, -2.3f},
+										{-2.3f, -2.3f, -2.3f,  2.3f,  2.3f,  2.3f}};
 	
 	float b[OUTPUT_SIZE] = {0.0f};
 	
@@ -34,8 +34,6 @@ int main() /* check_rectangular_size_8 */
 	x[3] = __VERIFIER_nondet_float();
 	x[4] = __VERIFIER_nondet_float();
 	x[5] = __VERIFIER_nondet_float();
-	x[6] = __VERIFIER_nondet_float();
-	x[7] = __VERIFIER_nondet_float();
 	
 	__VERIFIER_assume(isgreater(x[0], LINEAR_CHECK_RANGE) && isless(x[0], LINEAR_CHECK_RANGE));
 	__VERIFIER_assume(isgreater(x[1], LINEAR_CHECK_RANGE) && isless(x[1], LINEAR_CHECK_RANGE));
@@ -43,8 +41,6 @@ int main() /* check_rectangular_size_8 */
 	__VERIFIER_assume(isgreater(x[3], LINEAR_CHECK_RANGE) && isless(x[3], LINEAR_CHECK_RANGE));
 	__VERIFIER_assume(isgreater(x[4], LINEAR_CHECK_RANGE) && isless(x[4], LINEAR_CHECK_RANGE));
 	__VERIFIER_assume(isgreater(x[5], LINEAR_CHECK_RANGE) && isless(x[5], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[6], LINEAR_CHECK_RANGE) && isless(x[6], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[7], LINEAR_CHECK_RANGE) && isless(x[7], LINEAR_CHECK_RANGE));
 	
 	linear(x, y, W, b, INPUT_SIZE, OUTPUT_SIZE);
 	

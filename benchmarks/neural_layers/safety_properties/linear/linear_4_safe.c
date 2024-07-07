@@ -13,7 +13,7 @@ void linear(const float* x, float* y, const float W[OUTPUT_SIZE][INPUT_SIZE], co
 	for(i = 0; i < n; ++i) {
 		y[i] = b[i];
 		for(j = 0; j < m; ++j)
-			y[i] += W[j][i] * x[j];
+			y[i] += W[i][j] * x[j];
 	}
 }
 
