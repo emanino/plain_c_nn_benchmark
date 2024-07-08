@@ -28,6 +28,7 @@ void layernorm(const float* x, float* y, float gamma, float beta, int n)
 
 #define INPUT_SIZE 2
 
+#define LAYERNORM_CHECK_RANGE 1e18f
 #define LAYERNORM_CHECK_NEXT 1e-5f
 
 int main() /* check_non_decreasing_size_2 */
@@ -37,7 +38,7 @@ int main() /* check_non_decreasing_size_2 */
 	x[0] = __VERIFIER_nondet_float();
 	x[1] = x[0] + LAYERNORM_CHECK_NEXT;
 	
-	__VERIFIER_assume(!isnan(x[0]) && !isinf(x[0]));
+	__VERIFIER_assume(isgreater(x[0], -LAYERNORM_CHECK_RANGE) && isless(x[0], LAYERNORM_CHECK_RANGE));
 	
 	layernorm(x, y, 1.0f, 0.0f, INPUT_SIZE);
 	

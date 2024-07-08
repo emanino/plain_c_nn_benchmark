@@ -37,14 +37,14 @@ int main() /* check_rectangular_size_8 */
 	x[6] = __VERIFIER_nondet_float();
 	x[7] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreater(x[0], LINEAR_CHECK_RANGE) && isless(x[0], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[1], LINEAR_CHECK_RANGE) && isless(x[1], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[2], LINEAR_CHECK_RANGE) && isless(x[2], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[3], LINEAR_CHECK_RANGE) && isless(x[3], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[4], LINEAR_CHECK_RANGE) && isless(x[4], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[5], LINEAR_CHECK_RANGE) && isless(x[5], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[6], LINEAR_CHECK_RANGE) && isless(x[6], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[7], LINEAR_CHECK_RANGE) && isless(x[7], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[0], -LINEAR_CHECK_RANGE) && isless(x[0], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[1], -LINEAR_CHECK_RANGE) && isless(x[1], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[2], -LINEAR_CHECK_RANGE) && isless(x[2], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[3], -LINEAR_CHECK_RANGE) && isless(x[3], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[4], -LINEAR_CHECK_RANGE) && isless(x[4], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[5], -LINEAR_CHECK_RANGE) && isless(x[5], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[6], -LINEAR_CHECK_RANGE) && isless(x[6], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[7], -LINEAR_CHECK_RANGE) && isless(x[7], LINEAR_CHECK_RANGE));
 	
 	linear(x, y, W, b, INPUT_SIZE, OUTPUT_SIZE);
 	

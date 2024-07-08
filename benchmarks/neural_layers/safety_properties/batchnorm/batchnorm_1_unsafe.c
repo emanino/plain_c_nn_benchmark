@@ -35,7 +35,7 @@ void batchnorm(const float x[INPUT_SIZE][BATCH_SIZE], float y[INPUT_SIZE][BATCH_
 			y[i][j] = gamma[i] * (x[i][j] - mean[i]) / std[i] + beta[i];
 }
 
-#define BATCHNORM_CHECK_RANGE 1e18
+#define BATCHNORM_CHECK_RANGE 1e18f
 
 int main() /* check_bound_size_2_2 */
 {

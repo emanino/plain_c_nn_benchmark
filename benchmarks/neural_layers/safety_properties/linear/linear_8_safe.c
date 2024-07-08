@@ -31,8 +31,8 @@ int main() /* check_rectangular_size_2 */
 	x[0] = __VERIFIER_nondet_float();
 	x[1] = __VERIFIER_nondet_float();
 	
-	__VERIFIER_assume(isgreater(x[0], LINEAR_CHECK_RANGE) && isless(x[0], LINEAR_CHECK_RANGE));
-	__VERIFIER_assume(isgreater(x[1], LINEAR_CHECK_RANGE) && isless(x[1], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[0], -LINEAR_CHECK_RANGE) && isless(x[0], LINEAR_CHECK_RANGE));
+	__VERIFIER_assume(isgreater(x[1], -LINEAR_CHECK_RANGE) && isless(x[1], LINEAR_CHECK_RANGE));
 	
 	linear(x, y, W, b, INPUT_SIZE, OUTPUT_SIZE);
 	
