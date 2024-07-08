@@ -29,6 +29,7 @@ void layernorm(const float* x, float* y, float gamma, float beta, int n)
 #define INPUT_SIZE 6
 
 #define LAYERNORM_CHECK_RANGE 1e18f
+#define LAYERNORM_CHECK_ERROR 1e-1
 
 int main() /* check_bound_size_6 */
 {
@@ -56,7 +57,7 @@ int main() /* check_bound_size_6 */
 	for(i = 1; i < INPUT_SIZE; ++i)
 		sum += y[i];
 	
-	__VERIFIER_assert(sum == 0.0f); /* Expected result: verification failure */
+	__VERIFIER_assert(fabsf(sum) <= LAYERNORM_CHECK_ERROR); /* Expected result: verification failure */
 
     return 0;
 }
