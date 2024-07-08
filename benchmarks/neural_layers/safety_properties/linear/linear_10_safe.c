@@ -44,7 +44,7 @@ int main() /* check_rectangular_size_6 */
 	
 	linear(x, y, W, b, INPUT_SIZE, OUTPUT_SIZE);
 	
-	__VERIFIER_assert(y[0] == -y[1]); /* Expected result: verification failure */
+	__VERIFIER_assert(y[0] == -y[1]); /* Expected result: verification successful */
 
     return 0;
 }
