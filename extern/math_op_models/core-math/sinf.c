@@ -38,7 +38,7 @@ SOFTWARE.
 /* count number of trailing zeros by Edoardo Manino,
    adapted from Sean Eron Anderson's algorithm at:
    https://graphics.stanford.edu/~seander/bithacks.html */
-unsigned plain_ctz(uint64_t x)
+static unsigned plain_ctz(uint64_t x)
 {
     uint64_t lsb = x & -(int64_t) x; // isolate the least significant bit (lsb)
     unsigned ctz = 64;
@@ -74,17 +74,17 @@ typedef union {double f; uint64_t u;} b64u64_u;
 typedef unsigned __int128 u128;
 typedef uint64_t u64;
 
-static double __attribute__((noinline)) rbig(uint32_t u, int *q){
+static double __attribute__((noinline)) rbig(uint32_t u, int64_t *q){
   static const u64 ipi[] = {0xfe5163abdebbc562, 0xdb6295993c439041, 0xfc2757d1f534ddc0, 0xa2f9836e4e441529};
-  int e = (u>>23)&0xff, i;
+  int64_t e = (u>>23)&0xff, i;
   u64 m = (u&(~0u>>9))|1<<23;
   u128 p0 = (u128)m*ipi[0];
   u128 p1 = (u128)m*ipi[1]; p1 += p0>>64;
   u128 p2 = (u128)m*ipi[2]; p2 += p1>>64;
   u128 p3 = (u128)m*ipi[3]; p3 += p2>>64;
   u64 p3h = p3>>64, p3l = p3, p2l = p2, p1l = p1;
-  long a;
-  int k = e-124, s = k-23;
+  int64_t a;
+  int64_t k = e-124, s = k-23;
   /* in cr_sinf(), rbig() is called in the case 127+28 <= e < 0xff
      thus 155 <= e <= 254, which yields 28 <= k <= 127 and 5 <= s <= 104 */
   if (s<64) {
@@ -97,8 +97,8 @@ static double __attribute__((noinline)) rbig(uint32_t u, int *q){
     i = p3l<<(s-64)|p2l>>(128-s);
     a = p2l<<(s-64)|p1l>>(128-s);
   }
-  int sgn = u; sgn >>= 31;
-  long sm = a>>63;
+  int64_t sgn = u; sgn >>= 31;
+  int64_t sm = a>>63;
   i -= sm;
   double z = (a^sgn)*0x1p-64;
   i = (i^sgn) - sgn;
@@ -106,14 +106,14 @@ static double __attribute__((noinline)) rbig(uint32_t u, int *q){
   return z;
 }
 
-static inline double rltl(float z, int *q){
+static inline double rltl(float z, int64_t *q){
   double x = z;
   double idl = -0x1.b1bbead603d8bp-29*x, idh = 0x1.45f306ep+2*x, id = plain_roundeven(idh);
   b64u64_u Q = {.f = 0x1.8p52 + id}; *q = Q.u;
   return (idh - id) + idl;
 }
 
-static inline double rltl0(double x, int *q){
+static inline double rltl0(double x, int64_t *q){
   double idh = 0x1.45f306dc9c883p+2*x, id = plain_roundeven(idh);
   b64u64_u Q = {.f = 0x1.8p52 + id}; *q = Q.u;
   return idh - id;
@@ -160,7 +160,7 @@ static float __attribute__((noinline)) as_sinf_big(float x){
     errno = EDOM;
     return 0.0f/0.0f; // to raise FE_INVALID
   }
-  int ia;
+  int64_t ia;
   double z = rbig(t.u, &ia);
   double z2 = z*z, z4 = z2*z2;
   double aa = (a[0] + z2*a[1]) + z4*(a[2] + z2*a[3]);
@@ -173,7 +173,7 @@ static float __attribute__((noinline)) as_sinf_big(float x){
 float cr_sinf(float x){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
-  int ia;
+  int64_t ia;
   double z0 = x, z;
   if (ax>0x99000000u || ax<0x73000000){
     if (ax<0x73000000){

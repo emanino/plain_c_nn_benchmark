@@ -39,7 +39,7 @@ SOFTWARE.
    adapted from Sean Eron Anderson's and Eugene Nalimov's algorithms at:
    https://graphics.stanford.edu/~seander/bithacks.html
    https://www.chessprogramming.org/BitScan */
-unsigned plain_clz(uint32_t x)
+static unsigned plain_clz(uint32_t x)
 {
     //if(x == 0) return 32;
     unsigned clz = 32;
@@ -138,7 +138,7 @@ float cr_logf(float x){
   if(ux == 127u<<23) return 0.0f;
   uint32_t m = ux&((1<<23)-1), j = (m + (1<<(23-7)))>>(23-6);
   int32_t e = ((int32_t)ux>>23)-127;
-  b64u64_u tz = {.u = ((uint64_t)m|(1023l<<23))<<(52-23)};
+  b64u64_u tz = {.u = ((uint64_t)m|(1023ll<<23))<<(52-23)};
   double z = tz.f*tr[j] - 1, z2 = z*z;
   double r = ((e*0x1.62e42fefa39efp-1 + tl[j]) + z*b[0]) + z2*(b[1] + z*b[2]);
   float ub = r, lb = r + 0x1.f06p-33;
