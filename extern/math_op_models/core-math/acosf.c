@@ -64,7 +64,7 @@ static double poly12(double z, const double *c){
   return c0;
 }
 
-float cr_acosf(float x){
+float acosf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   static const double o[] = {0, 0x1.921fb54442d18p+1};
   double xs = x, r;

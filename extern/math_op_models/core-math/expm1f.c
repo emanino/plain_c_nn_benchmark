@@ -72,7 +72,7 @@ plain_roundeven (double x)
 typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
 
-float cr_expm1f(float x){
+float expm1f(float x){
   static const double c[] =
     {1, 0x1.62e42fef4c4e7p-6, 0x1.ebfd1b232f475p-13, 0x1.c6b19384ecd93p-20};
   static const double ch[] =

@@ -170,7 +170,7 @@ static float __attribute__((noinline)) as_sinf_big(float x){
   return r;
 }
 
-float cr_sinf(float x){
+float sinf(float x){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
   int64_t ia;

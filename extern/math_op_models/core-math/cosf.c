@@ -168,7 +168,7 @@ static float __attribute__((noinline)) as_cosf_big(float x){
   return r;
 }
 
-float cr_cosf(float x){
+float cosf(float x){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
   int64_t ia;

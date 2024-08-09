@@ -60,7 +60,7 @@ static double poly12(double z, const double *c){
   return c0;
 }
 
-float cr_asinf(float x){
+float asinf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   double xs = x, r;
   b32u32_u t = {.f = x};

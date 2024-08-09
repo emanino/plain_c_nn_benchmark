@@ -81,7 +81,7 @@ static __attribute__((noinline)) float as_special(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-float cr_atanhf(float x){
+float atanhf(float x){
   // Calculate atanh(x) using the difference of two logarithms -- atanh(x) = (ln(1+x) - ln(1-x))/2
   static const double tr[] = {
     0x1.fc07f02p-1, 0x1.f44659ep-1, 0x1.ecc07b3p-1, 0x1.e573ac9p-1,

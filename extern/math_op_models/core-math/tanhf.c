@@ -36,7 +36,7 @@ SOFTWARE.
 
 typedef union {float f; uint32_t u;} b32u32_u;
 
-float cr_tanhf(float x){
+float tanhf(float x){
   double z = x;
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;
