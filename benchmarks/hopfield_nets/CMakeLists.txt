@@ -2,7 +2,7 @@
 # HOPFIELD #
 ############
 include_directories(c_networks)
-file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS c_networks/hopfield_nets/*.c)
+file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS c_networks/*.c)
 
 if(VERBOSE_CONFIGURATION)
   message("HOPFIELD lib: ${HOPFIELD_C}")

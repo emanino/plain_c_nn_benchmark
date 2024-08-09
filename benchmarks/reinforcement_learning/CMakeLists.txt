@@ -1,7 +1,7 @@
 ##########################
 # REINFORCEMENT LEARNING #
 ##########################
-file(GLOB_RECURSE REINFORCEMENT_C  CONFIGURE_DEPENDS c_networks/reinforcement_learning/*.c)
+file(GLOB_RECURSE REINFORCEMENT_C  CONFIGURE_DEPENDS c_networks/*.c)
 
 if(VERBOSE_CONFIGURATION)
   message("REINFORCEMENT lib: ${REINFORCEMENT_C}")

@@ -1,7 +1,7 @@
 ############################
 # POLYNOMIAL APPROXIMATION #
 ############################
-file(GLOB_RECURSE POLY_C  CONFIGURE_DEPENDS c_networks/poly_approx/*.c)
+file(GLOB_RECURSE POLY_C  CONFIGURE_DEPENDS c_networks/*.c)
 
 if(VERBOSE_CONFIGURATION)
   message("POLY APPROX lib: ${POLY_C}")

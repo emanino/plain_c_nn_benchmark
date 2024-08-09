@@ -1,7 +1,7 @@
 ######################
 # REACH PROB DENSITY #
 ######################
-file(GLOB_RECURSE REACH_PROB_C CONFIGURE_DEPENDS c_networks/reach_prob_density/*.c)
+file(GLOB_RECURSE REACH_PROB_C CONFIGURE_DEPENDS c_networks/*.c)
 
 if(VERBOSE_CONFIGURATION)
   message("REACH PROB DENSITY lib: ${REACH_PROB_C}")
