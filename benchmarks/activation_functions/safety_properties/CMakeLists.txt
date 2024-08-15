@@ -1,5 +1,4 @@
-
-# Activation Functions doesn't depend on anything
+# No extra dependencies
 
 file(GLOB_RECURSE ACTIVATION_C CONFIGURE_DEPENDS *.c)
 

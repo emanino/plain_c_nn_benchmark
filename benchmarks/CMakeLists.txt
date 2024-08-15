@@ -10,7 +10,6 @@ file(GLOB_RECURSE BENCHMARKS_C CONFIGURE_DEPENDS *.c)
 #  target_link_libraries(${filename}-exe  keras_lib stub NETWORKS m)
 #endforeach()
 
-
 ########################
 # BENCHEXEC GENERATION #
 ########################
@@ -19,14 +18,13 @@ file(GLOB_RECURSE BENCHMARKS_C CONFIGURE_DEPENDS *.c)
 # file, and (3) a run-set file.
 #
 # (1) Although its not a requirement, it is usual to send benchmarks in a singular '.i' format. This
-# format is preprocessed (so no architecture specific shinanigans) and it should make the life of
+# format is preprocessed (so no architecture specific shenanigans) and it should make the life of
 # most verifiers easier.
 #
 # (2) The configuration file is an YAML file containing information about the property, expected-verdict
 # and input files.
 #
 # (3) The run-set is just a regex for all files that should be included in a meta-category.
-
 
 if(NOT EXPORT_SUITE)
   return()
@@ -37,41 +35,37 @@ function(generate_amalgamation FILES NAME)
   set(DESTINATION ${CMAKE_BINARY_DIR}/${NAME}.c)
   file(WRITE ${DESTINATION}) # Create the file
 
- foreach(C IN LISTS ${FILES})
-   file(READ ${C} FILE_CONTENT)
-   # Note: We need to force the input to be strings (using quotes) due to CMake considering ';' as a list separator.
-   string(REPLACE "\<verifier_functions.h\>" "\"verifier_functions.h\"" PREPROCESS_CONTENT "${FILE_CONTENT}")
-   file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
- endforeach()
+  foreach(C IN LISTS ${FILES})
+    file(READ ${C} FILE_CONTENT)
+    # Note: We need to force the input to be strings (using quotes) due to CMake considering ';' as a list separator.
+    string(REPLACE "\<verifier_functions.h\>" "\"verifier_functions.h\"" PREPROCESS_CONTENT "${FILE_CONTENT}")
+    file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
+  endforeach()
 
-
- add_custom_target(
-   ${NAME} ALL
-   COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
-  DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
-  COMMENT "Producing ${NAME}.i"
-  VERBATIM)
-if(0)
- # Just to check whether it compiles...
- add_custom_target(
-   ${NAME}-compiles ALL
-   COMMAND "clang"  ${CMAKE_BINARY_DIR}/${NAME}.c -I${CMAKE_BINARY_DIR}/ ${CMAKE_BINARY_DIR}/verifier_stubs.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks 
-  DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
-  COMMENT "Compiling ${NAME}.c"
-  VERBATIM)
-endif()
- 
+  add_custom_target(
+    ${NAME} ALL
+    COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
+    DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
+    COMMENT "Producing ${NAME}.i"
+    VERBATIM)
+  
+  # Just to check whether it compiles...
+  if(0)
+    add_custom_target(
+      ${NAME}-compiles ALL
+      COMMAND "clang" ${CMAKE_BINARY_DIR}/${NAME}.c -I${CMAKE_BINARY_DIR}/ ${CMAKE_BINARY_DIR}/verifier_stubs.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks 
+      DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
+      COMMENT "Compiling ${NAME}.c"
+      VERBATIM)
+  endif()
 endfunction()
-
 
 # Function to construct the YML
 function(generate_benchmark_yml BENCHMARK)
   string(FIND ${BENCHMARK} "_safe" IS_SAFE)
-  string(FIND ${BENCHMARK} "_unsat" IS_UNSAT)
-  if((${IS_SAFE} EQUAL -1) AND (${IS_UNSAT} EQUAL -1))
+  if(${IS_SAFE} EQUAL -1)
     string(FIND ${BENCHMARK} "_unsafe" IS_UNSAFE)
-    string(FIND ${BENCHMARK} "_sat" IS_SAT)
-    if((${IS_UNSAFE} EQUAL -1) AND (${IS_SAT} EQUAL -1))
+    if(${IS_UNSAFE} EQUAL -1)
       message(FATAL_ERROR "${BENCHMARK} is neither safe or unsafe")
     else()
       set(EXPECTED "false")
@@ -106,8 +100,10 @@ add_subdirectory(reinforcement_learning)
 add_subdirectory(neural_layers)
 add_subdirectory(sat_relu)
 add_subdirectory(lipschitz_bounded)
+
 ####################
 # NETWORKS LIBRARY #
 ####################
+
 add_library(NETWORKS INTERFACE)
-target_link_libraries(NETWORKS INTERFACE hopfield_lib poly_approx_lib reach_prob_lib reinforcement_lib)
+target_link_libraries(NETWORKS INTERFACE hopfield_lib poly_approx_lib reach_prob_lib reinforcement_lib lipschitz_lib sat_relu_lib)

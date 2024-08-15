@@ -1,6 +1,10 @@
-# Math Functions doesn't depend on anything
+# No extra dependencies
 
 file(GLOB_RECURSE MATH_C CONFIGURE_DEPENDS *.c)
+
+if(VERBOSE_CONFIGURATION)
+  message("Files: ${MATH_C}")
+endif()
 
 foreach(benchmark ${MATH_C})
   get_filename_component(filename ${benchmark} NAME)

@@ -1,8 +1,9 @@
-# HOPFIELD depends on specific Networks (and keras)
+# HOPFIELD depends on specific networks (and keras)
+
 foreach(width ${HOPFIELD_MODES})
   # TODO: fixed paths should be libraries
   file(GLOB_RECURSE HOPFIELD_NETWORK CONFIGURE_DEPENDS
-    ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks/hopfield_nets/softsign/${width}/*.c)
+    ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks/softsign/${width}/*.c)
 
   file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS ${width}/*.c)
   foreach(benchmark ${HOPFIELD_C})
@@ -16,5 +17,4 @@ foreach(width ${HOPFIELD_MODES})
                   ${CMAKE_BINARY_DIR}/${filename}-amalgamation.yml
       DESTINATION ${CMAKE_BINARY_DIR}/export/hopfield_nets/)
   endforeach()
-
 endforeach()

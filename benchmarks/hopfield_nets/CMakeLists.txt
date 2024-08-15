@@ -1,6 +1,7 @@
-############
-# HOPFIELD #
-############
+#####################
+# HOPFIELD NETWORKS #
+#####################
+
 include_directories(c_networks)
 file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS c_networks/*.c)
 

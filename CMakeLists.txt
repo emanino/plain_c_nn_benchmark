@@ -9,12 +9,10 @@ option(EXPORT_SUITE "Export benchmarks into SV-COMP compliant format" ON)
 include_directories(extern)
 
 # Libraries
-add_subdirectory(extern) # (The include folder is also a lib!)
+add_subdirectory(extern) # (The extern folder is also a lib!)
 
 # Benchmarks
 add_subdirectory(benchmarks)
 
 # Benchexec Extras
 add_subdirectory(benchexec-extras)
-
-
