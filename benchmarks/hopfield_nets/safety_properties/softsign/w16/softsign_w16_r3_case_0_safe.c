@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include <c_networks/softsign/w16/hop_softsign_w16_r3.h>
+#include <softsign/w16/hop_softsign_w16_r3.h>
 
 int main()
 {
