@@ -2,7 +2,9 @@
 # HOPFIELD NETWORKS #
 #####################
 
-include_directories(c_networks)
+#include_directories(c_networks)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
 file(GLOB_RECURSE HOPFIELD_C CONFIGURE_DEPENDS c_networks/*.c)
 
 if(VERBOSE_CONFIGURATION)
