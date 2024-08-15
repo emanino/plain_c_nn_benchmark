@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include <poly_approx/poly_4_4_4_4.h>
+#include <c_networks/poly_4_4_4_4.h>
 
 int main()
 {

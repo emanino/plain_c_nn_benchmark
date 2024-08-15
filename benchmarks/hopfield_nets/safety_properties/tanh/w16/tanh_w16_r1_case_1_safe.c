@@ -2,7 +2,7 @@
 
 #include <math.h>
 #include <keras2c/k2c_include.h>
-#include <hopfield_nets/tanh/w16/hop_tanh_w16_r1.h>
+#include <c_networks/tanh/w16/hop_tanh_w16_r1.h>
 
 int main()
 {
