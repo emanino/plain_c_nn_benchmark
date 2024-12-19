@@ -18,7 +18,7 @@ if(VERBOSE_CONFIGURATION)
   message("MUSL lib: ${MUSL_C}")
 endif()
 
-#add_library(musl_lib ${KERAS_C})
+#add_library(musl_lib ${MUSL_C})
 
 # CORE-MATH
 
@@ -28,7 +28,7 @@ if(VERBOSE_CONFIGURATION)
   message("CORE-MATH lib: ${CORE_MATH_C}")
 endif()
 
-#add_library(core_math_lib ${KERAS_C})
+#add_library(core_math_lib ${CORE_MATH_C})
 
 # STUB
 
