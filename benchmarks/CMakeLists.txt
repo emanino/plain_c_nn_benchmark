@@ -42,9 +42,19 @@ function(generate_amalgamation FILES NAME)
     file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
   endforeach()
 
+  set(MATH_OP_MODEL_PATH "${CMAKE_SOURCE_DIR}/extern/math_op_models/${MATH_OP_MODEL}")
+  file(GLOB MATH_OP_MODEL_SOURCES "${MATH_OP_MODEL_PATH}/*.c")
+  # Creates a string with --include arguments for each model file
+  set(MATH_OP_MODEL_INCLUDES "")
+  foreach(file ${MATH_OP_MODEL_SOURCES})
+    list(APPEND MATH_OP_MODEL_INCLUDES "-include" "${file}")
+  endforeach()
+
+  #message(STATUS "MATH_OP_MODEL_INCLUDES: ${MATH_OP_MODEL_INCLUDES}")
+
   add_custom_target(
     ${NAME} ALL
-    COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 > ${CMAKE_BINARY_DIR}/${NAME}.i
+    COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 ${MATH_OP_MODEL_INCLUDES} > ${CMAKE_BINARY_DIR}/${NAME}.i
     DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
     COMMENT "Producing ${NAME}.i"
     VERBATIM)
