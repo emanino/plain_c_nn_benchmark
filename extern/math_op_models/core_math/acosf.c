@@ -28,6 +28,8 @@ SOFTWARE.
 #include <stdint.h>
 #include <errno.h>
 
+#include "coremath_common.h"
+
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -35,6 +37,8 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
+#ifndef COREMATH_COMMON_H
+#define COREMATH_COMMON_H
 typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
 
@@ -63,6 +67,7 @@ static double poly12(double z, const double *c){
   c0 += z4*(c4 + z4*c8);
   return c0;
 }
+#endif
 
 float acosf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;

@@ -42,6 +42,7 @@ function(generate_amalgamation FILES NAME)
     file(APPEND ${DESTINATION} "${PREPROCESS_CONTENT}") # Create the file
   endforeach()
 
+  #set(MATH_OP_MODEL_PATH "${CMAKE_BINARY_DIR}/export/math_op_models/${MATH_OP_MODEL}")
   set(MATH_OP_MODEL_PATH "${CMAKE_SOURCE_DIR}/extern/math_op_models/${MATH_OP_MODEL}")
   file(GLOB MATH_OP_MODEL_SOURCES "${MATH_OP_MODEL_PATH}/*.c")
   # Creates a string with --include arguments for each model file

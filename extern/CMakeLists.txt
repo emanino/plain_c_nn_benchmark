@@ -21,14 +21,18 @@ endif()
 #add_library(musl_lib ${MUSL_C})
 
 # CORE-MATH
+if(MATH_OP_MODEL STREQUAL "core_math")
+  file(GLOB_RECURSE CORE_MATH_C CONFIGURE_DEPENDS math_op_models/core_math/*.c)
 
-file(GLOB_RECURSE CORE_MATH_C CONFIGURE_DEPENDS math_op_models/core_math/*.c)
+  if(VERBOSE_CONFIGURATION)
+    message("CORE-MATH lib: ${CORE_MATH_C}")
+  endif()
 
-if(VERBOSE_CONFIGURATION)
-  message("CORE-MATH lib: ${CORE_MATH_C}")
+  add_library(core_math_lib ${CORE_MATH_C})
+
+  #message(STATUS "Copying Core Math")
+  #file(COPY math_op_models/core_math DESTINATION  ${CMAKE_BINARY_DIR}/export/math_op_models)
 endif()
-
-#add_library(core_math_lib ${CORE_MATH_C})
 
 # STUB
 
