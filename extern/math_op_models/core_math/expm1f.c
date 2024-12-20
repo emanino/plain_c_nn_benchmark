@@ -28,6 +28,8 @@ SOFTWARE.
 #include <stdint.h>
 #include <errno.h>
 
+#include "coremath_common.h"
+
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -38,6 +40,8 @@ SOFTWARE.
 /* count number of trailing zeros by Edoardo Manino,
    adapted from Sean Eron Anderson's algorithm at:
    https://graphics.stanford.edu/~seander/bithacks.html */
+#ifndef COREMATH_COMMON_H
+#define COREMATH_COMMON_H
 static unsigned plain_ctz(uint64_t x)
 {
     uint64_t lsb = x & -(int64_t) x; // isolate the least significant bit (lsb)
@@ -71,6 +75,7 @@ plain_roundeven (double x)
 
 typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
+#endif
 
 float expm1f(float x){
   static const double c[] =

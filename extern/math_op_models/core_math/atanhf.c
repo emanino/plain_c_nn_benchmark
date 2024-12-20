@@ -28,6 +28,8 @@ SOFTWARE.
 #include <stdint.h>
 #include <errno.h>
 
+#include "coremath_common.h"
+
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -39,6 +41,8 @@ SOFTWARE.
    adapted from Sean Eron Anderson's and Eugene Nalimov's algorithms at:
    https://graphics.stanford.edu/~seander/bithacks.html
    https://www.chessprogramming.org/BitScan */
+#ifndef COREMATH_COMMON_H
+#define COREMATH_COMMON_H
 static unsigned plain_clz(uint32_t x)
 {
     //if(x == 0) return 32;
@@ -80,6 +84,7 @@ static __attribute__((noinline)) float as_special(float x){
   errno = EDOM;
   return 0.0f/0.0f; // to raise FE_INVALID
 }
+#endif
 
 float atanhf(float x){
   // Calculate atanh(x) using the difference of two logarithms -- atanh(x) = (ln(1+x) - ln(1-x))/2

@@ -28,6 +28,8 @@ SOFTWARE.
 #include <stdint.h>
 #include <errno.h>
 
+#include "coremath_common.h"
+
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -35,6 +37,8 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
+#ifndef COREMATH_COMMON_H
+#define COREMATH_COMMON_H
 typedef union {float f; uint32_t u;} b32u32_u;
 typedef union {double f; uint64_t u;} b64u64_u;
 
@@ -50,6 +54,7 @@ static __attribute__((noinline)) float as_special(float x){
   errno = EDOM;
   return 0.0f/0.0f; // to raise FE_INVALID
 }
+#endif
 
 float log1pf(float x) {
   static const double x0[] = {

@@ -27,6 +27,8 @@ SOFTWARE.
 #include <math.h>
 #include <stdint.h>
 
+#include "coremath_common.h"
+
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -34,7 +36,10 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
+#ifndef COREMATH_COMMON_H
+#define COREMATH_COMMON_H
 typedef union {float f; uint32_t u;} b32u32_u;
+#endif
 
 float tanhf(float x){
   double z = x;
