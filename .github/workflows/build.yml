@@ -9,7 +9,7 @@ jobs:
     - name: Setup APT dependencies
       run: sudo apt-get update && sudo apt-get install -y gcc-multilib
     - uses: actions/checkout@v3
-    - name: Configure project
+    - name: Configure project (default)
       run: mkdir build && cd build && cmake ..
     - name: Build
       run: cd build && make -j4 && make install
@@ -17,7 +17,22 @@ jobs:
       run: ./benchexec-extras/clean.sh ./build/export
     - uses: actions/upload-artifact@v1
       with:
-        name: benchmarks
+        name: benchmarks_default
         path: ./build/export
 
-
+  build_with_math_model:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup APT dependencies
+      run: sudo apt-get update && sudo apt-get install -y gcc-multilib
+    - uses: actions/checkout@v3
+    - name: Configure project (with core-math model)
+      run: mkdir build && cd build && cmake -DMATH_OP_MODEL=core_math ..
+    - name: Build
+      run: cd build && make -j4 && make install
+    - name: Post-Processing
+      run: ./benchexec-extras/clean.sh ./build/export
+    - uses: actions/upload-artifact@v1
+      with:
+        name: benchmarks_with_math
+        path: ./build/export
