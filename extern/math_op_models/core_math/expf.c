@@ -69,7 +69,7 @@ float cr_expf(float x){
     if(ux<0x6f93813eu) return 1.0 + z*(1 + z*0.5);
     if(ux >= 0xffu<<24) { // x is inf or nan
       if(ux > 0xffu<<24) return x; // x = nan
-      static const float ir[] = {INFINITY, 0.0f};
+      static const float ir[] = {1.0f / 0.0f, 0.0f}; // {INFINITY, 0.0f};
       return ir[t.u>>31]; // x = +-inf
     }
     if(t.u>0xc2ce8ec0u){

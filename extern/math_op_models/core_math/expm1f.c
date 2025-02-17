@@ -74,7 +74,7 @@ float cr_expm1f(float x){
       if(ax==(0xffu<<24)) return -1.0f;
       return -1.0f + 0x1p-26f;
     }
-    if(ax==(0xffu<<24)) return INFINITY;
+    if(ax==(0xffu<<24)) return 1.0f / 0.0f; // INFINITY;
     float r = 0x1.fffffep127*z;
     if(r>0x1.fffffep127f) errno = ERANGE;
     return r;
