@@ -37,11 +37,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-typedef union {float f; uint32_t u;} b32u32_u;
-
-static __attribute__((noinline)) float as_special(float x){
+static __attribute__((noinline)) float as_special_asinf(float x){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
   if(ax>(0xffu<<24)) return x; // nan
@@ -49,28 +45,12 @@ static __attribute__((noinline)) float as_special(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-static double poly12(double z, const double *c){
-  double z2 = z*z, z4 = z2*z2;
-  double c0 = c[0] + z*c[1];
-  double c2 = c[2] + z*c[3];
-  double c4 = c[4] + z*c[5];
-  double c6 = c[6] + z*c[7];
-  double c8 = c[8] + z*c[9];
-  double c10 = c[10] + z*c[11];
-  c0 += c2*z2;
-  c4 += c6*z2;
-  c8 += z2*c10;
-  c0 += z4*(c4 + z4*c8);
-  return c0;
-}
-#endif
-
-float asinf(float x){
+float cr_asinf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   double xs = x, r;
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
-  if(ax>0x7f<<24) return as_special(x);
+  if(ax>0x7f<<24) return as_special_asinf(x);
   if(ax<0x7ec29000u){
     if (ax<115<<24) return fmaf(x, 0x1p-25, x);
     static const double b[] =

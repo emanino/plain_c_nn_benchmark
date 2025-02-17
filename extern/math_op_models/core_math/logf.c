@@ -37,42 +37,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-/* count number of leading zeros by Edoardo Manino,
-   adapted from Sean Eron Anderson's and Eugene Nalimov's algorithms at:
-   https://graphics.stanford.edu/~seander/bithacks.html
-   https://www.chessprogramming.org/BitScan */
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-static unsigned plain_clz(uint32_t x)
-{
-    //if(x == 0) return 32;
-    unsigned clz = 32;
-    if(x & 0xFFFF0000) {
-        x >>= 16;
-        clz -= 16;
-    }
-    if(x & 0xFF00) {
-        x >>= 8;
-        clz -= 8;
-    }
-    if(x & 0xF0) {
-        x >>= 4;
-        clz -= 4;
-    }
-    if(x & 0xC) {
-        x >>= 2;
-        clz -= 2;
-    }
-    if(x & 0x3) {
-        x >>= 1;
-        clz -= 1;
-    }
-    return clz - x;
-}
-
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-static __attribute__((noinline)) float as_special(float x){
+static __attribute__((noinline)) float as_special_logf(float x){
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;
   if(ux == 0u){// +0.0
@@ -89,9 +54,8 @@ static __attribute__((noinline)) float as_special(float x){
   errno = EDOM;
   return 0.0f/0.0f; // to raise FE_INVALID and return nan
 }
-#endif
 
-float logf(float x){
+float cr_logf(float x){
   static const double tr[] = {
     0x1p+0, 0x1.f81f82p-1, 0x1.f07c1fp-1, 0x1.e9131acp-1,
     0x1.e1e1e1ep-1, 0x1.dae6077p-1, 0x1.d41d41dp-1, 0x1.cd85689p-1,
@@ -134,7 +98,7 @@ float logf(float x){
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;
   if(ux<(1<<23) || ux >= 0x7f800000u){
-    if(ux==0 || ux >= 0x7f800000u) return as_special(x); // <=0, nan, inf
+    if(ux==0 || ux >= 0x7f800000u) return as_special_logf(x); // <=0, nan, inf
     // subnormal
     int n = plain_clz(ux) - 8;
     ux <<= n;

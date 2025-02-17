@@ -36,12 +36,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-typedef union {float f; uint32_t u;} b32u32_u;
-#endif
-
-float tanhf(float x){
+float cr_tanhf(float x){
   double z = x;
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;

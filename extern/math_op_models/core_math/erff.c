@@ -36,13 +36,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-#endif
-
-float erff(float x){
+float cr_erff(float x){
   /* for 7 <= i < 63, C[i-7] is a degree-7 polynomial approximation of
      erf(i/16+1/32+x) for -1/32 <= x <= 1/32 */
   static const double C[56][8] = {

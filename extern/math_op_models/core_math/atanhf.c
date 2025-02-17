@@ -37,43 +37,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-/* count number of leading zeros by Edoardo Manino,
-   adapted from Sean Eron Anderson's and Eugene Nalimov's algorithms at:
-   https://graphics.stanford.edu/~seander/bithacks.html
-   https://www.chessprogramming.org/BitScan */
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-static unsigned plain_clz(uint32_t x)
-{
-    //if(x == 0) return 32;
-    unsigned clz = 32;
-    if(x & 0xFFFF0000) {
-        x >>= 16;
-        clz -= 16;
-    }
-    if(x & 0xFF00) {
-        x >>= 8;
-        clz -= 8;
-    }
-    if(x & 0xF0) {
-        x >>= 4;
-        clz -= 4;
-    }
-    if(x & 0xC) {
-        x >>= 2;
-        clz -= 2;
-    }
-    if(x & 0x3) {
-        x >>= 1;
-        clz -= 1;
-    }
-    return clz - x;
-}
-
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-
-static __attribute__((noinline)) float as_special(float x){
+static __attribute__((noinline)) float as_special_atanhf(float x){
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
   if(ax == 0x7f000000u){ // +-1
@@ -84,9 +48,8 @@ static __attribute__((noinline)) float as_special(float x){
   errno = EDOM;
   return 0.0f/0.0f; // to raise FE_INVALID
 }
-#endif
 
-float atanhf(float x){
+float cr_atanhf(float x){
   // Calculate atanh(x) using the difference of two logarithms -- atanh(x) = (ln(1+x) - ln(1-x))/2
   static const double tr[] = {
     0x1.fc07f02p-1, 0x1.f44659ep-1, 0x1.ecc07b3p-1, 0x1.e573ac9p-1,
@@ -135,7 +98,7 @@ float atanhf(float x){
   b32u32_u t = {.f = x};
   uint32_t ux = t.u, ax = ux<<1;
   if(ax<0x7a300000u || ax >= 0x7f000000u){
-    if(ax >= 0x7f000000u) return as_special(x);
+    if(ax >= 0x7f000000u) return as_special_atanhf(x);
     if(ax < 0x73713744u) {
       if(!ax) return x; // x = +-0
       return fmaf(x, 0x1p-25f, x); // |x| < 0.000352112(0x1.713744p-12)

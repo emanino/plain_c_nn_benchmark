@@ -28,8 +28,6 @@ SOFTWARE.
 #include <stdint.h>
 #include <errno.h>
 
-#include "coremath_common.h"
-
 // Warning: clang also defines __GNUC__
 #if defined(__GNUC__) && !defined(__clang__)
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
@@ -37,12 +35,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-
-static __attribute__((noinline)) float as_special(float x){
+static __attribute__((noinline)) float as_special_acosf(float x){
   const float pih = 0x1.921fb6p+1, pil = -0x1p-24f;
   b32u32_u t = {.f = x};
   if(t.u == (0x7fu<<23)) return 0.0f; // x=1
@@ -53,29 +46,13 @@ static __attribute__((noinline)) float as_special(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-static double poly12(double z, const double *c){
-  double z2 = z*z, z4 = z2*z2;
-  double c0 = c[0] + z*c[1];
-  double c2 = c[2] + z*c[3];
-  double c4 = c[4] + z*c[5];
-  double c6 = c[6] + z*c[7];
-  double c8 = c[8] + z*c[9];
-  double c10 = c[10] + z*c[11];
-  c0 += c2*z2;
-  c4 += c6*z2;
-  c8 += z2*c10;
-  c0 += z4*(c4 + z4*c8);
-  return c0;
-}
-#endif
-
-float acosf(float x){
+float cr_acosf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   static const double o[] = {0, 0x1.921fb54442d18p+1};
   double xs = x, r;
   b32u32_u t = {.f = x};
   uint32_t ax = t.u<<1;
-  if(ax>=0x7f<<24) return as_special(x);
+  if(ax>=0x7f<<24) return as_special_acosf(x);
   if(ax<0x7ec29000u){
     static const double b[] =
       {0x1.fffffffd9ccb8p-1, 0x1.5555c94838007p-3, 0x1.32ded4b7c20fap-4, 0x1.8566df703309ep-5,

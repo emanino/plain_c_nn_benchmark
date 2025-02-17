@@ -37,12 +37,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-
-static __attribute__((noinline)) float as_special(float x){
+static __attribute__((noinline)) float as_special_log1pf(float x){
   b32u32_u t = {.f = x};
   if(t.u==0xbf800000u){// +0.0
     errno = ERANGE;
@@ -54,9 +49,8 @@ static __attribute__((noinline)) float as_special(float x){
   errno = EDOM;
   return 0.0f/0.0f; // to raise FE_INVALID
 }
-#endif
 
-float log1pf(float x) {
+float cr_log1pf(float x) {
   static const double x0[] = {
     0x1.f81f82p-1, 0x1.e9131acp-1, 0x1.dae6077p-1, 0x1.cd85689p-1, 0x1.c0e0704p-1, 0x1.b4e81b5p-1,
     0x1.a98ef6p-1, 0x1.9ec8e95p-1, 0x1.948b0fdp-1, 0x1.8acb90fp-1, 0x1.8181818p-1, 0x1.78a4c81p-1,
@@ -100,7 +94,7 @@ float log1pf(float x) {
     if((r.u&0xfffffffl) == 0) r.f += 0x1p14*(f + (z - r.f));
     return r.f;
   } else {
-    if(ux>=0xbf800000u||ax>=0x7f800000u) return as_special(x);
+    if(ux>=0xbf800000u||ax>=0x7f800000u) return as_special_log1pf(x);
     b64u64_u t = {.f = z + 1};
     int e = t.u>>52;
     uint64_t m52 = t.u&(~0ull>>12);

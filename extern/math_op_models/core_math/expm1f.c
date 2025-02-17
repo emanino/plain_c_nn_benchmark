@@ -37,47 +37,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-/* count number of trailing zeros by Edoardo Manino,
-   adapted from Sean Eron Anderson's algorithm at:
-   https://graphics.stanford.edu/~seander/bithacks.html */
-#ifndef COREMATH_COMMON_H
-#define COREMATH_COMMON_H
-static unsigned plain_ctz(uint64_t x)
-{
-    uint64_t lsb = x & -(int64_t) x; // isolate the least significant bit (lsb)
-    unsigned ctz = 64;
-    if(lsb) ctz--;
-    if(lsb & 0x00000000FFFFFFFF) ctz -= 32;
-    if(lsb & 0x0000FFFF0000FFFF) ctz -= 16;
-    if(lsb & 0x00FF00FF00FF00FF) ctz -= 8;
-    if(lsb & 0x0F0F0F0F0F0F0F0F) ctz -= 4;
-    if(lsb & 0x3333333333333333) ctz -= 2;
-    if(lsb & 0x5555555555555555) ctz -= 1;
-    return ctz;
-}
-
-/* round x to nearest integer, breaking ties to even */
-static double
-plain_roundeven (double x)
-{
-  double y = round (x); /* nearest, away from 0 */
-  if (fabs (y - x) == 0.5)
-  {
-    /* if y is odd, we should return y-1 if x>0, and y+1 if x<0 */
-    union { double f; uint64_t n; } u, v;
-    u.f = y;
-    v.f = (x > 0) ? y - 1.0 : y + 1.0;
-    if (plain_ctz (v.n) > plain_ctz (u.n))
-      y = v.f;
-  }
-  return y;
-}
-
-typedef union {float f; uint32_t u;} b32u32_u;
-typedef union {double f; uint64_t u;} b64u64_u;
-#endif
-
-float expm1f(float x){
+float cr_expm1f(float x){
   static const double c[] =
     {1, 0x1.62e42fef4c4e7p-6, 0x1.ebfd1b232f475p-13, 0x1.c6b19384ecd93p-20};
   static const double ch[] =
