@@ -8,9 +8,9 @@ For more information about how the benchmarks were created, read our short paper
 
 1. **./benchexec-extras** contains additional files for running benchexec.
 
-2. **./includes/keras2c** contains the implementation of several types of neural network layers. These are used by networks converted via the keras2c tool: currently, polynomial approximation and hopfield networks belong to this category.
+2. **./extern/keras2c** contains the implementation of several types of neural network layers. These are used by networks converted via the keras2c tool: currently, polynomial approximation and hopfield networks belong to this category.
 
-3. **./includes/math_op_models** contains operational models of all the necessary mathematical functions in plain C. These files have been extracted from the MUSL implementation of the C standard library.
+3. **./extern/math_op_models** contains operational models of all the necessary mathematical functions in plain C. These files have been extracted from the Core-Math and MUSL implementations of the C standard library.
 
 4. **./models** contains the reference Keras and ONNX models for the networks in **/hopfield_nets** and **/poly_approx**. These models are not part of the main benchmarks.
 
