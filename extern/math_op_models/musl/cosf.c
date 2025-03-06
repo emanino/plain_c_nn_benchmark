@@ -16,15 +16,15 @@
 
 #include "libm.h"
 
-/* Small multiples of pi/2 rounded to double precision. */
-static const double
-c1pio2 = 1*M_PI_2, /* 0x3FF921FB, 0x54442D18 */
-c2pio2 = 2*M_PI_2, /* 0x400921FB, 0x54442D18 */
-c3pio2 = 3*M_PI_2, /* 0x4012D97C, 0x7F3321D2 */
-c4pio2 = 4*M_PI_2; /* 0x401921FB, 0x54442D18 */
-
 float cosf(float x)
 {
+	/* Small multiples of pi/2 rounded to double precision. */
+	static const double
+	c1pio2 = 1*M_PI_2, /* 0x3FF921FB, 0x54442D18 */
+	c2pio2 = 2*M_PI_2, /* 0x400921FB, 0x54442D18 */
+	c3pio2 = 3*M_PI_2, /* 0x4012D97C, 0x7F3321D2 */
+	c4pio2 = 4*M_PI_2; /* 0x401921FB, 0x54442D18 */
+	
 	double y;
 	uint32_t ix;
 	unsigned n, sign;

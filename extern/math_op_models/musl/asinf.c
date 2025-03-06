@@ -14,18 +14,15 @@
  */
 #include "libm.h"
 
-static const double
-pio2 = 1.570796326794896558e+00;
-
-static const float
-/* coefficients for R(x^2) */
-pS0 =  1.6666586697e-01,
-pS1 = -4.2743422091e-02,
-pS2 = -8.6563630030e-03,
-qS1 = -7.0662963390e-01;
-
 static float R(float z)
 {
+	static const float
+	/* coefficients for R(x^2) */
+	pS0 =  1.6666586697e-01,
+	pS1 = -4.2743422091e-02,
+	pS2 = -8.6563630030e-03,
+	qS1 = -7.0662963390e-01;
+	
 	float_t p, q;
 	p = z*(pS0+z*(pS1+z*pS2));
 	q = 1.0f+z*qS1;
@@ -34,6 +31,9 @@ static float R(float z)
 
 float asinf(float x)
 {
+	static const double
+	pio2 = 1.570796326794896558e+00;
+	
 	double s;
 	float z;
 	uint32_t hx,ix;

@@ -7,12 +7,12 @@
 
 #include "exp2f_data.h"
 
-#define N (1 << EXP2F_TABLE_BITS)
+#define N_EXP2F (1 << EXP2F_TABLE_BITS)
 
 const struct exp2f_data __exp2f_data = {
-  /* tab[i] = uint(2^(i/N)) - (i << 52-BITS)
-     used for computing 2^(k/N) for an int |k| < 150 N as
-     double(tab[k%N] + (k << 52-BITS)) */
+  /* tab[i] = uint(2^(i/N_EXP2F)) - (i << 52-BITS)
+     used for computing 2^(k/N_EXP2F) for an int |k| < 150 N_EXP2F as
+     double(tab[k%N_EXP2F] + (k << 52-BITS)) */
   .tab = {
 0x3ff0000000000000, 0x3fefd9b0d3158574, 0x3fefb5586cf9890f, 0x3fef9301d0125b51,
 0x3fef72b83c7d517b, 0x3fef54873168b9aa, 0x3fef387a6e756238, 0x3fef1e9df51fdee1,
@@ -23,13 +23,13 @@ const struct exp2f_data __exp2f_data = {
 0x3feee89f995ad3ad, 0x3feeff76f2fb5e47, 0x3fef199bdd85529c, 0x3fef3720dcef9069,
 0x3fef5818dcfba487, 0x3fef7c97337b9b5f, 0x3fefa4afa2a490da, 0x3fefd0765b6e4540,
   },
-  .shift_scaled = 0x1.8p+52 / N,
+  .shift_scaled = 0x1.8p+52 / N_EXP2F,
   .poly = {
   0x1.c6af84b912394p-5, 0x1.ebfce50fac4f3p-3, 0x1.62e42ff0c52d6p-1,
   },
   .shift = 0x1.8p+52,
-  .invln2_scaled = 0x1.71547652b82fep+0 * N,
+  .invln2_scaled = 0x1.71547652b82fep+0 * N_EXP2F,
   .poly_scaled = {
-  0x1.c6af84b912394p-5/N/N/N, 0x1.ebfce50fac4f3p-3/N/N, 0x1.62e42ff0c52d6p-1/N,
+  0x1.c6af84b912394p-5/N_EXP2F/N_EXP2F/N_EXP2F, 0x1.ebfce50fac4f3p-3/N_EXP2F/N_EXP2F, 0x1.62e42ff0c52d6p-1/N_EXP2F,
   },
 };

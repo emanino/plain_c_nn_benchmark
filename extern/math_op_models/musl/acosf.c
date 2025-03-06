@@ -15,16 +15,14 @@
 
 #include "libm.h"
 
-static const float
-pio2_hi = 1.5707962513e+00, /* 0x3fc90fda */
-pio2_lo = 7.5497894159e-08, /* 0x33a22168 */
-pS0 =  1.6666586697e-01,
-pS1 = -4.2743422091e-02,
-pS2 = -8.6563630030e-03,
-qS1 = -7.0662963390e-01;
-
 static float R(float z)
 {
+	static const float
+	pS0 =  1.6666586697e-01,
+	pS1 = -4.2743422091e-02,
+	pS2 = -8.6563630030e-03,
+	qS1 = -7.0662963390e-01;
+	
 	float_t p, q;
 	p = z*(pS0+z*(pS1+z*pS2));
 	q = 1.0f+z*qS1;
@@ -33,6 +31,10 @@ static float R(float z)
 
 float acosf(float x)
 {
+	static const float
+	pio2_hi = 1.5707962513e+00, /* 0x3fc90fda */
+	pio2_lo = 7.5497894159e-08; /* 0x33a22168 */
+	
 	float z,w,s,c,df;
 	uint32_t hx,ix;
 

@@ -18,10 +18,10 @@ ULP error: 0.818 (nearest rounding.)
 Relative error: 1.957 * 2^-26 (before rounding.)
 */
 
-#define T __logf_data.tab
-#define A __logf_data.poly
+#define T_LOGF __logf_data.tab
+#define A_LOGF __logf_data.poly
 #define Ln2 __logf_data.ln2
-#define N (1 << LOGF_TABLE_BITS)
+#define N_LOGF (1 << LOGF_TABLE_BITS)
 #define OFF 0x3f330000
 
 float logf(float x)
@@ -48,14 +48,14 @@ float logf(float x)
 	}
 
 	/* x = 2^k z; where z is in range [OFF,2*OFF] and exact.
-	   The range is split into N subintervals.
+	   The range is split into N_LOGF subintervals.
 	   The ith subinterval contains z and c is near its center.  */
 	tmp = ix - OFF;
-	i = (tmp >> (23 - LOGF_TABLE_BITS)) % N;
+	i = (tmp >> (23 - LOGF_TABLE_BITS)) % N_LOGF;
 	k = (int32_t)tmp >> 23; /* arithmetic shift */
 	iz = ix - (tmp & 0xff800000);
-	invc = T[i].invc;
-	logc = T[i].logc;
+	invc = T_LOGF[i].invc;
+	logc = T_LOGF[i].logc;
 	z = (double_t)asfloat(iz);
 
 	/* log(x) = log1p(z/c-1) + log(c) + k*Ln2 */
@@ -64,8 +64,8 @@ float logf(float x)
 
 	/* Pipelined polynomial evaluation to approximate log1p(r).  */
 	r2 = r * r;
-	y = A[1] * r + A[2];
-	y = A[0] * r2 + y;
+	y = A_LOGF[1] * r + A_LOGF[2];
+	y = A_LOGF[0] * r2 + y;
 	y = y * r2 + (y0 + r);
 	return eval_as_float(y);
 }

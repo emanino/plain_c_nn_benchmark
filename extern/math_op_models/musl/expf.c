@@ -20,10 +20,10 @@ Wrong count: 170635 (all nearest rounding wrong results with fma.)
 Non-nearest ULP error: 1 (rounded ULP error)
 */
 
-#define N (1 << EXP2F_TABLE_BITS)
+#define N_EXPF (1 << EXP2F_TABLE_BITS)
 #define InvLn2N __exp2f_data.invln2_scaled
-#define T __exp2f_data.tab
-#define C __exp2f_data.poly_scaled
+#define T_EXPF __exp2f_data.tab
+#define C_EXPF __exp2f_data.poly_scaled
 
 static inline uint32_t top12(float x)
 {
@@ -50,10 +50,10 @@ float expf(float x)
 			return __math_uflowf(0);
 	}
 
-	/* x*N/Ln2 = k + r with r in [-1/2, 1/2] and int k.  */
+	/* x*N_EXPF/Ln2 = k + r with r in [-1/2, 1/2] and int k.  */
 	z = InvLn2N * xd;
 
-	/* Round and convert z to int, the result is in [-150*N, 128*N] and
+	/* Round and convert z to int, the result is in [-150*N_EXPF, 128*N_EXPF] and
 	   ideally ties-to-even rule is used, otherwise the magnitude of r
 	   can be bigger which gives larger approximation error.  */
 #if TOINT_INTRINSICS
@@ -67,13 +67,13 @@ float expf(float x)
 #endif
 	r = z - kd;
 
-	/* exp(x) = 2^(k/N) * 2^(r/N) ~= s * (C0*r^3 + C1*r^2 + C2*r + 1) */
-	t = T[ki % N];
+	/* exp(x) = 2^(k/N_EXPF) * 2^(r/N_EXPF) ~= s * (C0*r^3 + C1*r^2 + C2*r + 1) */
+	t = T_EXPF[ki % N_EXPF];
 	t += ki << (52 - EXP2F_TABLE_BITS);
 	s = asdouble(t);
-	z = C[0] * r + C[1];
+	z = C_EXPF[0] * r + C_EXPF[1];
 	r2 = r * r;
-	y = C[2] * r + 1;
+	y = C_EXPF[2] * r + 1;
 	y = z * r2 + y;
 	y = y * s;
 	return eval_as_float(y);
