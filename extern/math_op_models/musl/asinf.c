@@ -14,7 +14,7 @@
  */
 #include "libm.h"
 
-static float R(float z)
+static float Rasinf(float z)
 {
 	static const float
 	/* coefficients for R(x^2) */
@@ -49,12 +49,12 @@ float asinf(float x)
 		/* if 0x1p-126 <= |x| < 0x1p-12, avoid raising underflow */
 		if (ix < 0x39800000 && ix >= 0x00800000)
 			return x;
-		return x + x*R(x*x);
+		return x + x*Rasinf(x*x);
 	}
 	/* 1 > |x| >= 0.5 */
 	z = (1 - fabsf(x))*0.5f;
 	s = sqrt(z);
-	x = pio2 - 2*(s+s*R(z));
+	x = pio2 - 2*(s+s*Rasinf(z));
 	if (hx >> 31)
 		return -x;
 	return x;

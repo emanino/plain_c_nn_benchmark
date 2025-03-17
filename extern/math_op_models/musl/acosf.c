@@ -15,7 +15,7 @@
 
 #include "libm.h"
 
-static float R(float z)
+static float Racosf(float z)
 {
 	static const float
 	pS0 =  1.6666586697e-01,
@@ -53,13 +53,13 @@ float acosf(float x)
 	if (ix < 0x3f000000) {
 		if (ix <= 0x32800000) /* |x| < 2**-26 */
 			return pio2_hi + 0x1p-120f;
-		return pio2_hi - (x - (pio2_lo-x*R(x*x)));
+		return pio2_hi - (x - (pio2_lo-x*Racosf(x*x)));
 	}
 	/* x < -0.5 */
 	if (hx >> 31) {
 		z = (1+x)*0.5f;
 		s = sqrtf(z);
-		w = R(z)*s-pio2_lo;
+		w = Racosf(z)*s-pio2_lo;
 		return 2*(pio2_hi - (s+w));
 	}
 	/* x > 0.5 */
@@ -68,6 +68,6 @@ float acosf(float x)
 	GET_FLOAT_WORD(hx,s);
 	SET_FLOAT_WORD(df,hx&0xfffff000);
 	c = (z-df*df)/(s+df);
-	w = R(z)*s+c;
+	w = Racosf(z)*s+c;
 	return 2*(df+w);
 }
