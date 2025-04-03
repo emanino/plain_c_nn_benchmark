@@ -36,7 +36,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-float cr_tanhf(float x){
+float tanhf(float x){
   double z = x;
   b32u32_u t = {.f = x};
   uint32_t ux = t.u;

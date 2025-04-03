@@ -50,7 +50,7 @@ static __attribute__((noinline)) float as_special_log1pf(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-float cr_log1pf(float x) {
+float log1pf(float x) {
   static const double x0[] = {
     0x1.f81f82p-1, 0x1.e9131acp-1, 0x1.dae6077p-1, 0x1.cd85689p-1, 0x1.c0e0704p-1, 0x1.b4e81b5p-1,
     0x1.a98ef6p-1, 0x1.9ec8e95p-1, 0x1.948b0fdp-1, 0x1.8acb90fp-1, 0x1.8181818p-1, 0x1.78a4c81p-1,

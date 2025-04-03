@@ -36,7 +36,7 @@ SOFTWARE.
 
 #pragma STDC FENV_ACCESS ON
 
-float cr_erff(float x){
+float erff(float x){
   /* for 7 <= i < 63, C[i-7] is a degree-7 polynomial approximation of
      erf(i/16+1/32+x) for -1/32 <= x <= 1/32 */
   static const double C[56][8] = {

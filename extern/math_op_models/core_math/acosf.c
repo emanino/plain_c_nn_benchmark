@@ -48,7 +48,7 @@ static __attribute__((noinline)) float as_special_acosf(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-float cr_acosf(float x){
+float acosf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   static const double o[] = {0, 0x1.921fb54442d18p+1};
   double xs = x, r;

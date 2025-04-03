@@ -45,7 +45,7 @@ static __attribute__((noinline)) float as_special_asinf(float x){
   return 0.0f/0.0f; // to raise FE_INVALID
 }
 
-float cr_asinf(float x){
+float asinf(float x){
   const double pi2 = 0x1.921fb54442d18p+0;
   double xs = x, r;
   b32u32_u t = {.f = x};

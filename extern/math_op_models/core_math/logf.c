@@ -55,7 +55,7 @@ static __attribute__((noinline)) float as_special_logf(float x){
   return 0.0f/0.0f; // to raise FE_INVALID and return nan
 }
 
-float cr_logf(float x){
+float logf(float x){
   static const double tr[] = {
     0x1p+0, 0x1.f81f82p-1, 0x1.f07c1fp-1, 0x1.e9131acp-1,
     0x1.e1e1e1ep-1, 0x1.dae6077p-1, 0x1.d41d41dp-1, 0x1.cd85689p-1,
