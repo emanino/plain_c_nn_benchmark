@@ -1,6 +1,7 @@
 #ifndef _VERIFICATION_FUNCTIONS_H
 #define _VERIFICATION_FUNCTIONS_H
 
+#include <stdlib.h> // for abort
 // Functions for verification (harness).
 // Mainly consists of assume, reach_error, and nondets
 // See: https://sv-comp.sosy-lab.org/2023/rules.php
