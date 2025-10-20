@@ -6,7 +6,7 @@
 // See: https://sv-comp.sosy-lab.org/2023/rules.php
 
 float __VERIFIER_nondet_float();
-void __VERIFIER_assume(int cond);
+#define __VERIFIER_assume(cond) if(!(cond)) abort();
 void reach_error();
 
 #define __VERIFIER_assert(cond) if(!(cond)) reach_error()
