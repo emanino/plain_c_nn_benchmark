@@ -15,7 +15,7 @@ jobs:
       run: cd build && make -j4 && make install
     - name: Post-Processing
       run: ./benchexec-extras/clean.sh ./build/export
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: benchmarks_default
         path: ./build/export
@@ -32,7 +32,7 @@ jobs:
       run: cd build && make -j4 && make install
     - name: Post-Processing
       run: ./benchexec-extras/clean.sh ./build/export
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         name: benchmarks_with_core_math
         path: ./build/export
