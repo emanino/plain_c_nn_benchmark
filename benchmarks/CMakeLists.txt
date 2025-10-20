@@ -55,7 +55,7 @@ function(generate_amalgamation FILES NAME)
 
   add_custom_target(
     ${NAME} ALL
-    COMMAND "${CMAKE_C_COMPILER}" -E ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 ${MATH_OP_MODEL_INCLUDES} > ${CMAKE_BINARY_DIR}/${NAME}.i
+    COMMAND cpp -P ${CMAKE_BINARY_DIR}/${NAME}.c -I ${CMAKE_SOURCE_DIR}/extern -I ${CMAKE_SOURCE_DIR}/benchmarks/hopfield_nets/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/lipschitz_bounded/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/poly_approx/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reach_prob_density/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/reinforcement_learning/c_networks -I ${CMAKE_SOURCE_DIR}/benchmarks/sat_relu/c_networks -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -m32 ${MATH_OP_MODEL_INCLUDES} > ${CMAKE_BINARY_DIR}/${NAME}.i
     DEPENDS ${CMAKE_BINARY_DIR}/${NAME}.c
     COMMENT "Producing ${NAME}.i"
     VERBATIM)
