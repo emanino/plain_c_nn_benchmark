@@ -173,10 +173,7 @@ static inline void node__0_Pad( const float data[1][3], const int64_t pads[4], c
 	uint32_t ir0;
 	for( uint32_t o0=0, il0=0; o0<1; o0++ ) {
 		bool pad_at_0=false;
-		if( o0 < 0){
-			pad_at_0= true;
-		}
-		else if( o0 < 1){
+		if( o0 < 1){
 			ir0=il0;
 			il0++;
 		}
@@ -186,10 +183,7 @@ static inline void node__0_Pad( const float data[1][3], const int64_t pads[4], c
 		uint32_t ir1;
 		for( uint32_t o1=0, il1=0; o1<24; o1++ ) {
 			bool pad_at_1=false;
-			if( o1 < 0){
-				pad_at_1= true;
-			}
-			else if( o1 < 3){
+			if( o1 < 3){
 				ir1=il1;
 				il1++;
 			}
