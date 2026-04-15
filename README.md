@@ -19,11 +19,11 @@ This repo contains NeuroCodeBench 2.0, a neural network verification benchmark t
 
 As the table shows, we took great care in balancing the number of unsafe instances (i.e. that contain a bug/counterexample) with the number of safe ones. Furthermore, the verdict of each instance has been established via an alternative technique. More information on the design of the benchmark, from requirements to safety properties and verdict sources, can be found in the paper:
 
-	Edoardo Manino, Bruno Farias, Rafael Sá Menezes, Fedor Shmarov, Lucas C. Cordeiro. _Floating-Point Neural Network Verification at the Software Level_. https://arxiv.org/abs/2510.23389
+Edoardo Manino, Bruno Farias, Rafael Sá Menezes, Fedor Shmarov, Lucas C. Cordeiro. _Floating-Point Neural Network Verification at the Software Level_. https://arxiv.org/abs/2510.23389
 
 A shorter and older description can be found in:
 
-	Edoardo Manino, Rafael Sá Menezes, Fedor Shmarov, Lucas C. Cordeiro. _NeuroCodeBench: a plain C neural network benchmark for software verification_. Workshop on Automated Formal Reasoning for Trustworthy AI Systems at the Brazilian Symposium on Formal Methods. 2023. https://arxiv.org/abs/2309.03617
+Edoardo Manino, Rafael Sá Menezes, Fedor Shmarov, Lucas C. Cordeiro. _NeuroCodeBench: a plain C neural network benchmark for software verification_. Workshop on Automated Formal Reasoning for Trustworthy AI Systems at the Brazilian Symposium on Formal Methods. 2023. https://arxiv.org/abs/2309.03617
 
 Please cite the above if you use NeuroCodeBench in your work.
 
